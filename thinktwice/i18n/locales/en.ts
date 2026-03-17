@@ -26,6 +26,10 @@ export default {
       "Hi! I'm here to help you think twice about your purchase. Tell me, what are you considering buying?",
     thinkingMessage:
       "That's interesting. Let me ask you a few questions to help you reflect on this decision.",
+    errorMessage: 'Sorry, something went wrong. Please try again.',
+    networkError: 'Connection error. Please check your internet and try again.',
+    typingIndicator: 'AI is thinking...',
+    retryButton: 'Retry',
   },
   drawer: {
     home: 'Home',

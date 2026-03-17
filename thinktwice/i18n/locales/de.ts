@@ -26,6 +26,10 @@ export default {
       'Hallo! Ich bin hier, um dir zu helfen, zweimal über deinen Kauf nachzudenken. Erzähl mir, was du kaufen möchtest.',
     thinkingMessage:
       'Das ist interessant. Lass mich dir ein paar Fragen stellen, um dir bei dieser Entscheidung zu helfen.',
+    errorMessage: 'Entschuldigung, etwas ist schiefgelaufen. Bitte versuche es erneut.',
+    networkError: 'Verbindungsfehler. Bitte überprüfe deine Internetverbindung und versuche es erneut.',
+    typingIndicator: 'KI denkt nach...',
+    retryButton: 'Erneut versuchen',
   },
   drawer: {
     home: 'Startseite',

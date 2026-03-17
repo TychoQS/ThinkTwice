@@ -38,6 +38,9 @@ export const Colors = {
     bubbleUserText: '#FFFFFF',
     bubbleBot: '#E8ECF0',
     bubbleBotText: '#11181C',
+    bubbleError: '#FEE2E2',
+    bubbleErrorText: '#991B1B',
+    typingIndicator: '#9BA1A6',
     inputBackground: '#FFFFFF',
     inputBorder: '#D0D5DD',
 
@@ -69,6 +72,9 @@ export const Colors = {
     bubbleUserText: '#0D1117',
     bubbleBot: '#21262D',
     bubbleBotText: '#ECEDEE',
+    bubbleError: '#450A0A',
+    bubbleErrorText: '#FCA5A5',
+    typingIndicator: '#687076',
     inputBackground: '#161B22',
     inputBorder: '#30363D',
 

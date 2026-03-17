@@ -5,4 +5,6 @@ export interface ChatMessage {
   role: MessageRole;
   text: string;
   timestamp: number;
+  isLoading?: boolean;
+  isError?: boolean;
 }
