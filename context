@@ -1,0 +1,27 @@
+Contexto del proyecto:
+Estoy desarrollando una aplicación móvil llamada ThinkTwice con Expo (React Native, compatible con iOS y Android). Su propósito es ayudar a usuarios a evitar compras impulsivas mediante fricción cognitiva: un chatbot con IA, cuestionarios, y educación sobre trampas de marketing.
+Arquitectura: MVVM estricto — separación clara entre View, ViewModel y Model:
+
+/views → componentes de pantalla
+/viewmodels → hooks con lógica y estado
+/models → tipos y estructuras de datos
+
+Internacionalización: i18n desde el principio con react-i18next. Cero strings hardcodeados en componentes. Prepara al menos los locales en y es.
+Theming: Define los colores en un único archivo de tema centralizado (por ejemplo /theme/colors.ts) con variables para:
+
+primary y secondary (fácilmente intercambiables)
+Variantes light y dark para cada color semántico (background, surface, text, etc.)
+Compatible con useColorScheme de Expo para respetar el tema del dispositivo (T2 técnico del proyecto)
+
+Mi tarea: US1.5
+
+"As a user, I want to start analyzing my situation within 3 or less interactions with a conversation."
+
+Las 3 interacciones son exactamente estas:
+
+Pantalla de entrada — splash/home de bienvenida
+Lobby — el usuario elige entre Chatbot o Cuestionario
+Pantalla de chat — preview funcional con input de texto y burbujas de mensajes; sin backend de IA por ahora
+
+Lo que necesito:
+Diseña e implementa las tres pantallas siguiendo MVVM, i18n y theming centralizado. Empieza directamente con el diseño visual y el código. El chat puede ser estático/semiestático sin integración de IA todavía.
