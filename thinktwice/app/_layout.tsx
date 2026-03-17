@@ -1,22 +1,54 @@
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { Stack } from 'expo-router';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { Drawer } from 'expo-router/drawer';
 import { StatusBar } from 'expo-status-bar';
+import { StyleSheet } from 'react-native';
 import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { SettingsProvider, useSettings } from '@/contexts/SettingsContext';
+import { DrawerContent } from '@/components/DrawerContent';
+import { Colors } from '@/constants/theme';
 import '@/i18n';
 
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
+function DrawerLayout() {
+  const { resolvedTheme } = useSettings();
+  const colors = Colors[resolvedTheme];
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack screenOptions={{ headerShown: false }}>
-        <Stack.Screen name="index" />
-        <Stack.Screen name="lobby" />
-        <Stack.Screen name="chat" />
-      </Stack>
-      <StatusBar style="auto" />
+    <ThemeProvider value={resolvedTheme === 'dark' ? DarkTheme : DefaultTheme}>
+      <Drawer
+        drawerContent={(props) => <DrawerContent {...props} />}
+        screenOptions={{
+          headerShown: false,
+          drawerType: 'front',
+          drawerStyle: {
+            width: 280,
+            backgroundColor: colors.surface,
+          },
+          swipeEnabled: true,
+        }}
+      >
+        <Drawer.Screen name="index" />
+        <Drawer.Screen name="chat" />
+        <Drawer.Screen name="settings" />
+      </Drawer>
+      <StatusBar style={resolvedTheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
   );
 }
+
+export default function RootLayout() {
+  return (
+    <GestureHandlerRootView style={styles.root}>
+      <SettingsProvider>
+        <DrawerLayout />
+      </SettingsProvider>
+    </GestureHandlerRootView>
+  );
+}
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+});

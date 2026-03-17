@@ -24,4 +24,23 @@ export default {
     welcomeMessage: '你好！我在这里帮助你对购买决定三思。告诉我，你在考虑购买什么？',
     thinkingMessage: '很有趣。让我问你几个问题，帮助你深思这个决定。',
   },
+  drawer: {
+    home: '首页',
+    settings: '设置',
+    darkMode: '深色模式',
+    lightMode: '浅色模式',
+  },
+  settings: {
+    title: '设置',
+    appearance: '外观',
+    theme: '主题',
+    themeSystem: '跟随系统',
+    themeLight: '浅色',
+    themeDark: '深色',
+    fontSize: '字体大小',
+    fontSmall: '小',
+    fontMedium: '中',
+    fontLarge: '大',
+    language: '语言',
+  },
 };

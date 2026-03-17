@@ -10,16 +10,25 @@ import {
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
 import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { useSettings } from '@/contexts/SettingsContext';
 import { useChatViewModel } from '@/viewmodels/useChatViewModel';
 import type { ChatMessage } from '@/models/chat';
 
-function MessageBubble({ message, colors }: { message: ChatMessage; colors: typeof Colors.light }) {
+function MessageBubble({
+  message,
+  colors,
+  fontScale,
+}: {
+  message: ChatMessage;
+  colors: typeof Colors.light;
+  fontScale: number;
+}) {
   const isUser = message.role === 'user';
 
   return (
@@ -42,7 +51,10 @@ function MessageBubble({ message, colors }: { message: ChatMessage; colors: type
         <ThemedText
           style={[
             styles.bubbleText,
-            { color: isUser ? colors.bubbleUserText : colors.bubbleBotText },
+            {
+              color: isUser ? colors.bubbleUserText : colors.bubbleBotText,
+              fontSize: 15 * fontScale,
+            },
           ]}
         >
           {message.text}
@@ -54,30 +66,40 @@ function MessageBubble({ message, colors }: { message: ChatMessage; colors: type
 
 export default function ChatScreen() {
   const router = useRouter();
+  const navigation = useNavigation();
   const { t } = useTranslation();
   const insets = useSafeAreaInsets();
-  const scheme = useColorScheme() ?? 'light';
-  const colors = Colors[scheme];
+  const { resolvedTheme, fontScale } = useSettings();
+  const colors = Colors[resolvedTheme];
 
   const { messages, inputText, setInputText, sendMessage } = useChatViewModel();
 
   return (
-    <ThemedView style={styles.container}>
+    <ThemedView
+      style={styles.container}
+      lightColor={colors.background}
+      darkColor={colors.background}
+    >
       {/* Header */}
-      <ThemedView
+      <View
         style={[
           styles.header,
-          { paddingTop: insets.top + 8, borderBottomColor: colors.border },
+          { paddingTop: insets.top + 8, borderBottomColor: colors.border, backgroundColor: colors.surface },
         ]}
       >
-        <Pressable onPress={() => router.back()} style={styles.headerBack}>
+        <Pressable onPress={() => router.back()} style={styles.headerBtn}>
           <Ionicons name="arrow-back" size={24} color={colors.text} />
         </Pressable>
-        <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
+        <ThemedText type="defaultSemiBold" style={[styles.headerTitle, { fontSize: 17 * fontScale }]}>
           {t('chat.title')}
         </ThemedText>
-        <View style={styles.headerSpacer} />
-      </ThemedView>
+        <Pressable
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          style={styles.headerBtn}
+        >
+          <Ionicons name="menu" size={24} color={colors.text} />
+        </Pressable>
+      </View>
 
       {/* Messages */}
       <KeyboardAvoidingView
@@ -88,16 +110,22 @@ export default function ChatScreen() {
         <FlatList
           data={messages}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <MessageBubble message={item} colors={colors} />}
+          renderItem={({ item }) => (
+            <MessageBubble message={item} colors={colors} fontScale={fontScale} />
+          )}
           contentContainerStyle={styles.messagesList}
           showsVerticalScrollIndicator={false}
         />
 
         {/* Input bar */}
-        <ThemedView
+        <View
           style={[
             styles.inputBar,
-            { paddingBottom: insets.bottom + 8, borderTopColor: colors.border },
+            {
+              paddingBottom: insets.bottom + 8,
+              borderTopColor: colors.border,
+              backgroundColor: colors.surface,
+            },
           ]}
         >
           <TextInput
@@ -107,6 +135,7 @@ export default function ChatScreen() {
                 backgroundColor: colors.inputBackground,
                 borderColor: colors.inputBorder,
                 color: colors.text,
+                fontSize: 15 * fontScale,
               },
             ]}
             placeholder={t('chat.inputPlaceholder')}
@@ -136,7 +165,7 @@ export default function ChatScreen() {
               color={inputText.trim() ? '#FFFFFF' : colors.textSecondary}
             />
           </Pressable>
-        </ThemedView>
+        </View>
       </KeyboardAvoidingView>
     </ThemedView>
   );
@@ -149,26 +178,23 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
-  // Header
   header: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
     paddingBottom: 12,
     borderBottomWidth: 1,
   },
-  headerBack: {
-    padding: 4,
+  headerBtn: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   headerTitle: {
     flex: 1,
     textAlign: 'center',
-    fontSize: 17,
   },
-  headerSpacer: {
-    width: 32,
-  },
-  // Messages
   messagesList: {
     padding: 16,
     gap: 12,
@@ -189,10 +215,8 @@ const styles = StyleSheet.create({
     borderRadius: 18,
   },
   bubbleText: {
-    fontSize: 15,
     lineHeight: 21,
   },
-  // Input bar
   inputBar: {
     flexDirection: 'row',
     alignItems: 'flex-end',
@@ -209,7 +233,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 16,
     paddingVertical: 10,
-    fontSize: 15,
   },
   sendButton: {
     width: 40,

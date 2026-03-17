@@ -26,4 +26,23 @@ export default {
       'こんにちは！購買についてじっくり考えるお手伝いをします。何を買おうとしているか教えてください。',
     thinkingMessage: '興味深いですね。この決断について考えるためにいくつか質問させてください。',
   },
+  drawer: {
+    home: 'ホーム',
+    settings: '設定',
+    darkMode: 'ダークモード',
+    lightMode: 'ライトモード',
+  },
+  settings: {
+    title: '設定',
+    appearance: '外観',
+    theme: 'テーマ',
+    themeSystem: 'システム',
+    themeLight: 'ライト',
+    themeDark: 'ダーク',
+    fontSize: 'フォントサイズ',
+    fontSmall: '小',
+    fontMedium: '中',
+    fontLarge: '大',
+    language: '言語',
+  },
 };

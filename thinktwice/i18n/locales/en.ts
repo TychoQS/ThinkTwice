@@ -27,4 +27,23 @@ export default {
     thinkingMessage:
       "That's interesting. Let me ask you a few questions to help you reflect on this decision.",
   },
+  drawer: {
+    home: 'Home',
+    settings: 'Settings',
+    darkMode: 'Dark mode',
+    lightMode: 'Light mode',
+  },
+  settings: {
+    title: 'Settings',
+    appearance: 'Appearance',
+    theme: 'Theme',
+    themeSystem: 'System',
+    themeLight: 'Light',
+    themeDark: 'Dark',
+    fontSize: 'Font size',
+    fontSmall: 'Small',
+    fontMedium: 'Medium',
+    fontLarge: 'Large',
+    language: 'Language',
+  },
 };

@@ -1,1 +1,1 @@
-export { default } from '@/views/WelcomeScreen';
+export { default } from '@/views/LobbyScreen';

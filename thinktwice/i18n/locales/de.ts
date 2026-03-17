@@ -27,4 +27,23 @@ export default {
     thinkingMessage:
       'Das ist interessant. Lass mich dir ein paar Fragen stellen, um dir bei dieser Entscheidung zu helfen.',
   },
+  drawer: {
+    home: 'Startseite',
+    settings: 'Einstellungen',
+    darkMode: 'Dunkelmodus',
+    lightMode: 'Hellmodus',
+  },
+  settings: {
+    title: 'Einstellungen',
+    appearance: 'Darstellung',
+    theme: 'Thema',
+    themeSystem: 'System',
+    themeLight: 'Hell',
+    themeDark: 'Dunkel',
+    fontSize: 'Schriftgröße',
+    fontSmall: 'Klein',
+    fontMedium: 'Mittel',
+    fontLarge: 'Groß',
+    language: 'Sprache',
+  },
 };

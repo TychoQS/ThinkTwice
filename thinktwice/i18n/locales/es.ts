@@ -27,4 +27,23 @@ export default {
     thinkingMessage:
       'Eso es interesante. Déjame hacerte algunas preguntas para ayudarte a reflexionar sobre esta decisión.',
   },
+  drawer: {
+    home: 'Inicio',
+    settings: 'Ajustes',
+    darkMode: 'Modo oscuro',
+    lightMode: 'Modo claro',
+  },
+  settings: {
+    title: 'Ajustes',
+    appearance: 'Apariencia',
+    theme: 'Tema',
+    themeSystem: 'Sistema',
+    themeLight: 'Claro',
+    themeDark: 'Oscuro',
+    fontSize: 'Tamaño de fuente',
+    fontSmall: 'Pequeño',
+    fontMedium: 'Mediano',
+    fontLarge: 'Grande',
+    language: 'Idioma',
+  },
 };

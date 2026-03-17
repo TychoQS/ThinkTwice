@@ -27,4 +27,23 @@ export default {
     thinkingMessage:
       'Интересно. Позволь задать тебе несколько вопросов, чтобы помочь обдумать это решение.',
   },
+  drawer: {
+    home: 'Главная',
+    settings: 'Настройки',
+    darkMode: 'Тёмный режим',
+    lightMode: 'Светлый режим',
+  },
+  settings: {
+    title: 'Настройки',
+    appearance: 'Внешний вид',
+    theme: 'Тема',
+    themeSystem: 'Системная',
+    themeLight: 'Светлая',
+    themeDark: 'Тёмная',
+    fontSize: 'Размер шрифта',
+    fontSmall: 'Маленький',
+    fontMedium: 'Средний',
+    fontLarge: 'Большой',
+    language: 'Язык',
+  },
 };
