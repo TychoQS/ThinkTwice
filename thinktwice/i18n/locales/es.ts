@@ -26,6 +26,10 @@ export default {
       '¡Hola! Estoy aquí para ayudarte a pensar dos veces sobre tu compra. Dime, ¿qué estás considerando comprar?',
     thinkingMessage:
       'Eso es interesante. Déjame hacerte algunas preguntas para ayudarte a reflexionar sobre esta decisión.',
+    errorMessage: 'Lo siento, algo salió mal. Por favor, inténtalo de nuevo.',
+    networkError: 'Error de conexión. Verifica tu internet e inténtalo de nuevo.',
+    typingIndicator: 'La IA está pensando...',
+    retryButton: 'Reintentar',
   },
   drawer: {
     home: 'Inicio',

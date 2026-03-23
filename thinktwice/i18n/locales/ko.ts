@@ -25,6 +25,10 @@ export default {
     welcomeMessage:
       '안녕하세요! 구매에 대해 다시 한번 생각해 볼 수 있도록 도와드리겠습니다. 무엇을 구매하려고 하시나요?',
     thinkingMessage: '흥미롭네요. 이 결정에 대해 생각해 볼 수 있도록 몇 가지 질문을 드릴게요.',
+    errorMessage: '죄송합니다, 문제가 발생했습니다. 다시 시도해 주세요.',
+    networkError: '연결 오류입니다. 인터넷을 확인하고 다시 시도해 주세요.',
+    typingIndicator: 'AI가 생각 중...',
+    retryButton: '다시 시도',
   },
   drawer: {
     home: '홈',

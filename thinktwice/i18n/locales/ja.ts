@@ -25,6 +25,10 @@ export default {
     welcomeMessage:
       'こんにちは！購買についてじっくり考えるお手伝いをします。何を買おうとしているか教えてください。',
     thinkingMessage: '興味深いですね。この決断について考えるためにいくつか質問させてください。',
+    errorMessage: '申し訳ございません、エラーが発生しました。もう一度お試しください。',
+    networkError: '接続エラーです。インターネット接続を確認してもう一度お試しください。',
+    typingIndicator: 'AIが考え中...',
+    retryButton: 'リトライ',
   },
   drawer: {
     home: 'ホーム',

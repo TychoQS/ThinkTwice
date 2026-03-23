@@ -23,6 +23,10 @@ export default {
     send: '发送',
     welcomeMessage: '你好！我在这里帮助你对购买决定三思。告诉我，你在考虑购买什么？',
     thinkingMessage: '很有趣。让我问你几个问题，帮助你深思这个决定。',
+    errorMessage: '抱歉，出了点问题。请重试。',
+    networkError: '连接错误。请检查你的网络并重试。',
+    typingIndicator: 'AI正在思考...',
+    retryButton: '重试',
   },
   drawer: {
     home: '首页',

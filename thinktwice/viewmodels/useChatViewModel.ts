@@ -1,6 +1,8 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import type { FlatList } from 'react-native';
 import type { ChatMessage } from '@/models/chat';
+import { sendMessageToAI } from '@/services/aiService';
 
 let nextId = 1;
 function createId(): string {
@@ -9,6 +11,7 @@ function createId(): string {
 
 export function useChatViewModel() {
   const { t } = useTranslation();
+  const flatListRef = useRef<FlatList<ChatMessage>>(null);
 
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
@@ -19,10 +22,17 @@ export function useChatViewModel() {
     },
   ]);
   const [inputText, setInputText] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const sendMessage = useCallback(() => {
+  const scrollToEnd = useCallback(() => {
+    setTimeout(() => {
+      flatListRef.current?.scrollToEnd({ animated: true });
+    }, 100);
+  }, []);
+
+  const sendMessage = useCallback(async () => {
     const trimmed = inputText.trim();
-    if (!trimmed) return;
+    if (!trimmed || isLoading) return;
 
     const userMsg: ChatMessage = {
       id: createId(),
@@ -31,17 +41,48 @@ export function useChatViewModel() {
       timestamp: Date.now(),
     };
 
-    // Static bot reply (no AI backend yet)
-    const botMsg: ChatMessage = {
+    // Add a loading placeholder for the bot
+    const loadingMsg: ChatMessage = {
       id: createId(),
       role: 'bot',
-      text: t('chat.thinkingMessage'),
+      text: '',
       timestamp: Date.now() + 1,
+      isLoading: true,
     };
 
-    setMessages((prev) => [...prev, userMsg, botMsg]);
-    setInputText('');
-  }, [inputText, t]);
+    const updatedMessages = [...messages, userMsg];
 
-  return { messages, inputText, setInputText, sendMessage };
+    setMessages([...updatedMessages, loadingMsg]);
+    setInputText('');
+    setIsLoading(true);
+    scrollToEnd();
+
+    try {
+      const aiResponse = await sendMessageToAI(updatedMessages);
+
+      const botMsg: ChatMessage = {
+        id: loadingMsg.id, // Reuse the same id to replace
+        role: 'bot',
+        text: aiResponse,
+        timestamp: Date.now(),
+      };
+
+      setMessages([...updatedMessages, botMsg]);
+    } catch {
+      const errorMsg: ChatMessage = {
+        id: loadingMsg.id,
+        role: 'bot',
+        text: t('chat.errorMessage'),
+        timestamp: Date.now(),
+        isError: true,
+      };
+
+      setMessages([...updatedMessages, errorMsg]);
+    } finally {
+      setIsLoading(false);
+      scrollToEnd();
+    }
+  }, [inputText, isLoading, messages, t, scrollToEnd]);
+
+  return { messages, inputText, setInputText, sendMessage, isLoading, flatListRef };
 }
