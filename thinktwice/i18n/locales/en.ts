@@ -50,4 +50,7 @@ export default {
     fontLarge: 'Large',
     language: 'Language',
   },
+  network: {
+    offlineWarning: 'You are currently offline.',
+  },
 };
