@@ -50,4 +50,89 @@ export default {
     fontLarge: 'Large',
     language: 'Language',
   },
+  questionnaire: {
+    modeTitle: 'Choose your test',
+    modeSubtitle: 'How much time do you have to reflect?',
+    quickTest: {
+      title: 'Quick Test',
+      description: 'Answer 8 questions and get an instant recommendation',
+    },
+    customTest: {
+      title: 'Product-specific',
+      description: 'Personalized questions based on the type of product',
+      comingSoon: 'Coming soon',
+    },
+    start: 'Start',
+    progress: 'Question {{current}} of {{total}}',
+    back: 'Back',
+    next: 'Next',
+    result: {
+      title: 'Your result',
+      proceed: {
+        label: 'Go for it!',
+        description: "You've thought this through well. This looks like a considered purchase, not an impulse.",
+      },
+      wait: {
+        label: 'Think it over',
+        description: 'There are some yellow flags. Consider waiting a few days before deciding.',
+      },
+      avoid: {
+        label: 'Avoid this purchase',
+        description: "This looks like an impulse buy. Take a step back — you'll likely be glad you waited.",
+      },
+      tryAgain: 'Try again',
+      backHome: 'Back to home',
+    },
+    questions: {
+      q1: {
+        text: 'Had you planned this purchase before today?',
+        a: "Yes, I've been thinking about it for a while",
+        b: 'I thought about it a few days ago',
+        c: 'No, I just came across it',
+      },
+      q2: {
+        text: 'Can you afford this without affecting your finances?',
+        a: 'Yes, it fits comfortably in my budget',
+        b: 'I could, but it would stretch my budget',
+        c: "No, I'd use credit or savings",
+      },
+      q3: {
+        text: 'Do you already own something similar that works well?',
+        a: "No, I genuinely need it",
+        b: "I have something similar but it doesn't fully meet my needs",
+        c: 'Yes, I have something that does the same job',
+      },
+      q4: {
+        text: 'Would you still want this in 30 days?',
+        a: "Absolutely, it's something I've wanted for a while",
+        b: 'Probably yes',
+        c: "I'm not sure",
+        d: 'Possibly not',
+      },
+      q5: {
+        text: 'How would you describe this purchase?',
+        a: "It's a real necessity",
+        b: "It's something useful I want",
+        c: "It's a spur-of-the-moment impulse",
+      },
+      q6: {
+        text: 'Have you compared prices or researched alternatives?',
+        a: "Yes, I've done my research",
+        b: "I've looked a bit but not in depth",
+        c: "No, I'd buy it right away",
+      },
+      q7: {
+        text: 'Are you buying influenced by a current emotion (stress, excitement, sadness)?',
+        a: "No, my mood isn't influencing this",
+        b: 'Maybe a little',
+        c: "Yes, I'm feeling emotional right now",
+      },
+      q8: {
+        text: 'If you waited a week, what do you think would happen?',
+        a: "I'd still be just as convinced",
+        b: 'I might change my mind',
+        c: "I'd probably be glad I didn't buy it",
+      },
+    },
+  },
 };

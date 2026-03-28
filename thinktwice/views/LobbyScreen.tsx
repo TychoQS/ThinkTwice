@@ -108,9 +108,7 @@ export default function LobbyScreen() {
           description={t('lobby.questionnaire.description')}
           accentColor={colors.secondary}
           colors={colors}
-          onPress={() => {
-            // Questionnaire — not part of US1.5
-          }}
+          onPress={() => router.push('/questionnaire')}
         />
       </View>
     </ThemedView>

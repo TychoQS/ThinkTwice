@@ -50,4 +50,89 @@ export default {
     fontLarge: 'Grande',
     language: 'Idioma',
   },
+  questionnaire: {
+    modeTitle: 'Elige tu test',
+    modeSubtitle: '¿Cuánto tiempo tienes para reflexionar?',
+    quickTest: {
+      title: 'Test rápido',
+      description: 'Responde 8 preguntas y obtén una recomendación inmediata',
+    },
+    customTest: {
+      title: 'Test personalizado',
+      description: 'Preguntas adaptadas al tipo de producto que quieres comprar',
+      comingSoon: 'Próximamente',
+    },
+    start: 'Comenzar',
+    progress: 'Pregunta {{current}} de {{total}}',
+    back: 'Atrás',
+    next: 'Siguiente',
+    result: {
+      title: 'Tu resultado',
+      proceed: {
+        label: '¡Adelante!',
+        description: 'Lo has pensado bien. Parece una compra meditada, no impulsiva.',
+      },
+      wait: {
+        label: 'Piénsalo bien',
+        description: 'Hay algunas señales de alerta. Considera esperar unos días antes de decidir.',
+      },
+      avoid: {
+        label: 'Evita esta compra',
+        description: 'Parece una compra impulsiva. Da un paso atrás — probablemente te alegrarás de haber esperado.',
+      },
+      tryAgain: 'Intentar de nuevo',
+      backHome: 'Volver al inicio',
+    },
+    questions: {
+      q1: {
+        text: '¿Habías planificado esta compra antes de hoy?',
+        a: 'Sí, lo tenía en mente desde hace tiempo',
+        b: 'Lo pensé hace unos días',
+        c: 'No, se me ocurrió al momento',
+      },
+      q2: {
+        text: '¿Tienes presupuesto para esto sin afectar tus finanzas?',
+        a: 'Sí, entra perfectamente en mi presupuesto',
+        b: 'Podría, aunque ajustaría mi presupuesto',
+        c: 'No, usaría crédito o ahorros',
+      },
+      q3: {
+        text: '¿Ya tienes algo similar que funcione bien?',
+        a: 'No, realmente lo necesito',
+        b: 'Tengo algo parecido pero no cubre mis necesidades',
+        c: 'Sí, tengo algo que hace lo mismo',
+      },
+      q4: {
+        text: '¿Seguirías queriendo esto dentro de 30 días?',
+        a: 'Sin duda, es algo que llevo tiempo queriendo',
+        b: 'Probablemente sí',
+        c: 'No estoy seguro',
+        d: 'Posiblemente no',
+      },
+      q5: {
+        text: '¿Cómo describirías esta compra?',
+        a: 'Es una necesidad real',
+        b: 'Es algo útil que quiero',
+        c: 'Es un capricho del momento',
+      },
+      q6: {
+        text: '¿Has comparado precios o investigado alternativas?',
+        a: 'Sí, he investigado bien',
+        b: 'He mirado algo pero no en profundidad',
+        c: 'No, lo compraría directamente',
+      },
+      q7: {
+        text: '¿Estás comprando influenciado por una emoción del momento?',
+        a: 'No, mi estado de ánimo no influye en esto',
+        b: 'Quizás un poco',
+        c: 'Sí, estoy emocionado/estresado ahora mismo',
+      },
+      q8: {
+        text: 'Si esperas una semana, ¿qué crees que pasará?',
+        a: 'Seguiré igual de convencido',
+        b: 'Quizás cambie de opinión',
+        c: 'Probablemente me alegre de no haberlo comprado',
+      },
+    },
+  },
 };

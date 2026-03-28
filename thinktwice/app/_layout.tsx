@@ -31,6 +31,7 @@ function DrawerLayout() {
         <Drawer.Screen name="index" />
         <Drawer.Screen name="chat" />
         <Drawer.Screen name="settings" />
+        <Drawer.Screen name="questionnaire" />
       </Drawer>
       <StatusBar style={resolvedTheme === 'dark' ? 'light' : 'dark'} />
     </ThemeProvider>
