@@ -97,7 +97,7 @@ function ModeSelectionPhase({
           icon="flash-outline"
           title={t('questionnaire.quickTest.title')}
           description={t('questionnaire.quickTest.description')}
-          accentColor={colors.secondary}
+          accentColor={colors.primaryLight}
           onPress={onStartQuickTest}
           colors={colors}
         />
@@ -105,7 +105,7 @@ function ModeSelectionPhase({
           icon="options-outline"
           title={t('questionnaire.customTest.title')}
           description={t('questionnaire.customTest.description')}
-          accentColor={colors.primary}
+          accentColor={colors.primaryDark}
           disabled
           badge={t('questionnaire.customTest.comingSoon')}
           onPress={() => {}}
@@ -159,7 +159,7 @@ function QuestionsPhase({
           <View
             style={[
               styles.progressFill,
-              { backgroundColor: colors.secondary, width: `${progress * 100}%` },
+              { backgroundColor: colors.primary, width: `${progress * 100}%` },
             ]}
           />
         </View>
@@ -185,8 +185,8 @@ function QuestionsPhase({
               style={({ pressed }) => [
                 styles.optionCard,
                 {
-                  backgroundColor: isSelected ? colors.secondary + '18' : colors.surface,
-                  borderColor: isSelected ? colors.secondary : colors.border,
+                  backgroundColor: isSelected ? colors.primary + '18' : colors.surface,
+                  borderColor: isSelected ? colors.primary : colors.border,
                   opacity: pressed ? 0.8 : 1,
                 },
               ]}
@@ -195,8 +195,8 @@ function QuestionsPhase({
                 style={[
                   styles.optionIndicator,
                   {
-                    borderColor: isSelected ? colors.secondary : colors.border,
-                    backgroundColor: isSelected ? colors.secondary : 'transparent',
+                    borderColor: isSelected ? colors.primary : colors.border,
+                    backgroundColor: isSelected ? colors.primary : 'transparent',
                   },
                 ]}
               >
@@ -228,7 +228,7 @@ function QuestionsPhase({
             styles.navButton,
             styles.navButtonPrimary,
             {
-              backgroundColor: canGoNext ? colors.secondary : colors.surfaceVariant,
+              backgroundColor: canGoNext ? colors.primary : colors.surfaceVariant,
             },
           ]}
         >

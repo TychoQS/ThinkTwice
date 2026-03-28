@@ -7,13 +7,21 @@
 import { Platform } from 'react-native';
 
 // ── Brand palette (swap these to re-theme the entire app) ──
-const primary = '#4A90D9';
-const primaryLight = '#6BABEF';
-const primaryDark = '#3A7BC8';
+const primary = '#599380';
+const primaryLight = '#75AF9C';
+const primaryDark = '#3D7764';
 
-const secondary = '#F5A623';
-const secondaryLight = '#FFBE4F';
-const secondaryDark = '#D98E1B';
+const secondary = '#CAE8DE';
+const secondaryLight = '#DFF4EF';
+const secondaryDark = '#A0C8BA';
+
+// ── Dark mode brand palette (brighter variants for dark backgrounds) ──
+const primaryDk = '#75AF9C';       // same as primaryLight — more visible on dark
+const primaryLightDk = '#92C4B4';
+const primaryDarkDk = '#599380';   // original primary becomes the dark variant
+const secondaryDk = '#9DCFC0';     // mid-tone mint — more visible than #CAE8DE on dark
+const secondaryLightDk = '#BAE2D8';
+const secondaryDarkDk = '#72B09B';
 
 export const Colors = {
   light: {
@@ -60,15 +68,15 @@ export const Colors = {
     border: '#30363D',
 
     // Brand
-    primary: primaryLight,
-    primaryLight: '#8DC4FF',
-    primaryDark: primary,
-    secondary: secondaryLight,
-    secondaryLight: '#FFD080',
-    secondaryDark: secondary,
+    primary: primaryDk,
+    primaryLight: primaryLightDk,
+    primaryDark: primaryDarkDk,
+    secondary: secondaryDk,
+    secondaryLight: secondaryLightDk,
+    secondaryDark: secondaryDarkDk,
 
     // Chat-specific
-    bubbleUser: primaryLight,
+    bubbleUser: primaryDk,
     bubbleUserText: '#0D1117',
     bubbleBot: '#21262D',
     bubbleBotText: '#ECEDEE',
@@ -79,10 +87,10 @@ export const Colors = {
     inputBorder: '#30363D',
 
     // Legacy
-    tint: '#FFFFFF',
+    tint: primaryDk,
     icon: '#9BA1A6',
     tabIconDefault: '#9BA1A6',
-    tabIconSelected: '#FFFFFF',
+    tabIconSelected: primaryDk,
   },
 };
 

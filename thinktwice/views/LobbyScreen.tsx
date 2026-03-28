@@ -106,7 +106,7 @@ export default function LobbyScreen() {
           icon="clipboard-outline"
           title={t('lobby.questionnaire.title')}
           description={t('lobby.questionnaire.description')}
-          accentColor={colors.secondary}
+          accentColor={colors.primaryLight}
           colors={colors}
           onPress={() => router.push('/questionnaire')}
         />
