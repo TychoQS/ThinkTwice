@@ -210,26 +210,31 @@ export default function ChatScreen() {
             },
           ]}
         >
-          <TextInput
-            style={[
-              styles.input,
-              {
-                backgroundColor: colors.inputBackground,
-                borderColor: colors.inputBorder,
-                color: colors.text,
-                fontSize: 15 * fontScale,
-              },
-            ]}
-            placeholder={t('chat.inputPlaceholder')}
-            placeholderTextColor={colors.textSecondary}
-            value={inputText}
-            onChangeText={setInputText}
-            multiline
-            maxLength={500}
-            onSubmitEditing={sendMessage}
-            returnKeyType="send"
-            editable={!isLoading}
-          />
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={[
+                styles.input,
+                {
+                  backgroundColor: colors.inputBackground,
+                  borderColor: colors.inputBorder,
+                  color: colors.text,
+                  fontSize: 15 * fontScale,
+                },
+              ]}
+              placeholder={t('chat.inputPlaceholder')}
+              placeholderTextColor={colors.textSecondary}
+              value={inputText}
+              onChangeText={setInputText}
+              multiline
+              maxLength={500}
+              onSubmitEditing={sendMessage}
+              returnKeyType="send"
+              editable={!isLoading}
+            />
+            <ThemedText style={[styles.charCount, { color: colors.textSecondary }]}>
+              {inputText.length}/500
+            </ThemedText>
+          </View>
           <Pressable
             onPress={sendMessage}
             disabled={isLoading || !inputText.trim()}
@@ -325,14 +330,26 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     gap: 8,
   },
-  input: {
+  inputContainer: {
     flex: 1,
+    position: 'relative',
+    justifyContent: 'flex-end',
+  },
+  input: {
+    width: '100%',
     minHeight: 40,
     maxHeight: 100,
     borderRadius: 20,
     borderWidth: 1,
     paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingTop: 10,
+    paddingBottom: 20, // Space for the character count
+  },
+  charCount: {
+    position: 'absolute',
+    bottom: 6,
+    right: 16,
+    fontSize: 10,
   },
   sendButton: {
     width: 40,

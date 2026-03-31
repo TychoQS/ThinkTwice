@@ -1,4 +1,5 @@
 import { GROQ_API_KEY } from '@/secrets/apiKeys';
+import { buildMarketingTrapPromptBlock } from './marketingTrapService';
 
 /**
  * Supported AI providers.
@@ -48,10 +49,11 @@ const SHARED_CONFIG = {
     '- Ask clarifying questions about the product they want to buy',
     '- Help them distinguish between needs and wants',
     '- Encourage them to consider waiting before purchasing',
-    '- Point out common marketing tricks (urgency, scarcity, anchoring)',
     '- Be supportive, never judgmental',
     '- Keep responses concise (2-4 sentences typically)',
     '- Respond in the same language the user writes in',
+    '',
+    buildMarketingTrapPromptBlock(),
   ].join('\n'),
 };
 
