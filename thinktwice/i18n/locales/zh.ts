@@ -47,4 +47,7 @@ export default {
     fontLarge: '大',
     language: '语言',
   },
+  network: {
+    offlineWarning: '您当前处于离线状态。',
+  },
 };

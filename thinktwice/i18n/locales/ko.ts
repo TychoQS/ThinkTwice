@@ -49,4 +49,7 @@ export default {
     fontLarge: '크게',
     language: '언어',
   },
+  network: {
+    offlineWarning: '현재 오프라인 상태입니다.',
+  },
 };

@@ -135,4 +135,7 @@ export default {
       },
     },
   },
+  network: {
+    offlineWarning: 'Estás desconectado.',
+  },
 };

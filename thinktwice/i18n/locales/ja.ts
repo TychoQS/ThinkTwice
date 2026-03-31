@@ -49,4 +49,7 @@ export default {
     fontLarge: '大',
     language: '言語',
   },
+  network: {
+    offlineWarning: '現在オフラインです。',
+  },
 };
