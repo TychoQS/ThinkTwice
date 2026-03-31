@@ -1,6 +1,7 @@
 import type { AIAdapter } from './AIAdapter';
 import type { ChatMessage } from '@/models/chat';
 import { AI_CONFIG } from '../aiConfig';
+import i18n from '@/i18n';
 
 /**
  * Groq / OpenAI-compatible API response types (subset we need).
@@ -28,7 +29,9 @@ export class GroqAdapter implements AIAdapter {
 
     // System prompt
     if (AI_CONFIG.systemPrompt) {
-      messages.push({ role: 'system', content: AI_CONFIG.systemPrompt });
+      const currentLang = i18n.language || 'en';
+      const promptWithLanguage = `${AI_CONFIG.systemPrompt}\n\nCRITICAL INSTRUCTION: You MUST respond entirely in the language corresponding to the ISO code '${currentLang}'. Do NOT use other language ever. You must reply in the language that we provided here which is the one that the user set the application, even if the user use another language.`;
+      messages.push({ role: 'system', content: promptWithLanguage });
     }
 
     // Map conversation history (skip transient messages like loading/error)
