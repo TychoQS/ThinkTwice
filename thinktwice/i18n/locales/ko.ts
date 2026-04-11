@@ -17,6 +17,10 @@ export default {
       title: '설문지',
       description: '빠른 질문에 답하여 결정을 평가하세요',
     },
+    crisis: {
+      title: '위기 툴킷',
+      description: '강박적인 패턴을 끊기 위한 빠른 도구',
+    },
   },
   chat: {
     title: '채팅',
@@ -48,8 +52,39 @@ export default {
     fontMedium: '보통',
     fontLarge: '크게',
     language: '언어',
+    distractionApp: '주의 분산 앱',
+    selectApp: '앱 선택...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: '무작위 위키백과 문서',
+    },
   },
   network: {
     offlineWarning: '현재 오프라인 상태입니다.',
+  },
+  crisis: {
+    title: '위기 툴킷',
+    subtitle: '강박 패턴을 끊는 방법',
+    description: '강한 구매 충동을 느끼시나요? 이 도구를 사용하여 시간과 거리를 두세요.',
+    waitingRoom: {
+      title: '대기실',
+      description: '구매 전 10분 동안 진정하세요',
+    },
+    instantDistraction: {
+      title: '즉각적인 주의 분산',
+      description: '주의를 돌리기 위해 미리 설정된 앱 열기',
+      notSetTitle: '앱 미선택됨',
+      notSetDesc: '설정에서 먼저 주의 분산 앱을 선택해주세요.',
+    },
+  },
+  waitingRoom: {
+    title: '대기실',
+    subtitle: '심호흡을 하고 시간을 보내세요',
+    timeRemaining: '남은 시간:',
+    completed: '시간이 다 되었습니다! 아직 구매하시겠습니까?',
+    leave: '대기실 나가기',
   },
 };

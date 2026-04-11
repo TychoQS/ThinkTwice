@@ -17,6 +17,10 @@ export default {
       title: 'Cuestionario',
       description: 'Responde preguntas rápidas para evaluar tu decisión',
     },
+    crisis: {
+      title: 'Kit de Crisis',
+      description: 'Herramientas rápidas para romper el patrón compulsivo',
+    },
   },
   chat: {
     title: 'Chat',
@@ -49,6 +53,35 @@ export default {
     fontMedium: 'Mediano',
     fontLarge: 'Grande',
     language: 'Idioma',
+    distractionApp: 'App de distracción',
+    selectApp: 'Seleccionar app...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: 'Artículo Aleatorio Wikipedia',
+    },
+  },
+  crisis: {
+    title: 'Kit de Crisis',
+    subtitle: 'Rompe el patrón compulsivo',
+    description: '¿Sientes un impulso fuerte por comprar? Usa estas herramientas para darte tiempo y espacio.',
+    waitingRoom: {
+      title: 'Sala de Espera',
+      description: 'Espera 10 minutos para calmarte antes de decidir',
+    },
+    instantDistraction: {
+      title: 'Distracción Instantánea',
+      description: 'Abre tu app predefinida para despejar la mente',
+    },
+  },
+  waitingRoom: {
+    title: 'Sala de Espera',
+    subtitle: 'Respira y deja que el tiempo pase',
+    timeRemaining: 'Tiempo restante:',
+    completed: '¡Tiempo cumplido! ¿Aún quieres comprarlo?',
+    leave: 'Salir de la Sala',
   },
   questionnaire: {
     modeTitle: 'Elige tu test',

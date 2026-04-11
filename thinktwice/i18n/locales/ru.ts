@@ -17,6 +17,10 @@ export default {
       title: 'Анкета',
       description: 'Ответь на быстрые вопросы, чтобы оценить своё решение',
     },
+    crisis: {
+      title: 'Набор для кризиса',
+      description: 'Быстрые инструменты, чтобы разорвать компульсивный паттерн',
+    },
   },
   chat: {
     title: 'Чат',
@@ -49,8 +53,39 @@ export default {
     fontMedium: 'Средний',
     fontLarge: 'Большой',
     language: 'Язык',
+    distractionApp: 'Приложение для отвлечения',
+    selectApp: 'Выберите приложение...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: 'Случайная статья из Википедии',
+    },
   },
   network: {
     offlineWarning: 'Вы в настоящее время не в сети.',
+  },
+  crisis: {
+    title: 'Набор для кризиса',
+    subtitle: 'Методы разорвать компульсивный паттерн',
+    description: 'Чувствуете сильное желание купить? Используйте эти инструменты, чтобы дать себе время и дистанцию.',
+    waitingRoom: {
+      title: 'Зал ожидания',
+      description: 'Подождите 10 минут, чтобы остыть',
+    },
+    instantDistraction: {
+      title: 'Мгновенное отвлечение',
+      description: 'Откройте заданное приложение, чтобы отвлечься',
+      notSetTitle: 'Приложение не выбрано',
+      notSetDesc: 'Пожалуйста, сначала выберите приложение для отвлечения в настройках.',
+    },
+  },
+  waitingRoom: {
+    title: 'Зал ожидания',
+    subtitle: 'Дышите и пусть время идет',
+    timeRemaining: 'Оставшееся время:',
+    completed: 'Время вышло! Вы все еще хотите это купить?',
+    leave: 'Покинуть Зал',
   },
 };

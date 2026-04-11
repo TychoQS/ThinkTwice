@@ -17,6 +17,10 @@ export default {
       title: 'Questionnaire',
       description: 'Answer quick questions to evaluate your decision',
     },
+    crisis: {
+      title: 'Crisis Toolkit',
+      description: 'Quick tools to break the compulsive pattern',
+    },
   },
   chat: {
     title: 'Chat',
@@ -49,6 +53,35 @@ export default {
     fontMedium: 'Medium',
     fontLarge: 'Large',
     language: 'Language',
+    distractionApp: 'Instant Distraction App',
+    selectApp: 'Select an app...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: 'Random Wikipedia Article',
+    },
+  },
+  crisis: {
+    title: 'Crisis Toolkit',
+    subtitle: 'Methods to break the compulsive pattern',
+    description: 'Feeling a strong urge to buy? Use these tools to give yourself some time and distance.',
+    waitingRoom: {
+      title: 'Digital Waiting Room',
+      description: 'Wait 10 minutes to cool down before purchasing',
+    },
+    instantDistraction: {
+      title: 'Instant Distraction',
+      description: 'Open your predefined app to get your mind off it',
+    },
+  },
+  waitingRoom: {
+    title: 'Waiting Room',
+    subtitle: 'Breathe and let time pass',
+    timeRemaining: 'Time remaining:',
+    completed: "Time's up! Do you still want to buy it?",
+    leave: 'Leave Waiting Room',
   },
   questionnaire: {
     modeTitle: 'Choose your test',

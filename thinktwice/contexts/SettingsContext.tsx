@@ -12,16 +12,20 @@ interface SettingsContextValue {
     resolvedTheme: ResolvedTheme;
     fontSize: FontSize;
     fontScale: number;
-    language: string;
+    distractionApp: string;
+    distractionAppLabel: string;
     setThemeMode: (mode: ThemeMode) => void;
     setFontSize: (size: FontSize) => void;
     setLanguage: (lang: string) => void;
+    setDistractionApp: (appId: string, appLabel?: string) => void;
 }
 
 const STORAGE_KEYS = {
     theme: '@thinktwice_theme',
     fontSize: '@thinktwice_fontSize',
     language: '@thinktwice_language',
+    distractionApp: '@thinktwice_distractionApp',
+    distractionAppLabel: '@thinktwice_distractionAppLabel',
 } as const;
 
 const FONT_SCALE_MAP: Record<FontSize, number> = {
@@ -39,15 +43,19 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [themeMode, setThemeModeState] = useState<ThemeMode>('system');
     const [fontSize, setFontSizeState] = useState<FontSize>('medium');
     const [language, setLanguageState] = useState<string>(i18n.language ?? 'en');
+    const [distractionApp, setDistractionAppState] = useState<string>('');
+    const [distractionAppLabel, setDistractionAppLabelState] = useState<string>('');
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         (async () => {
             try {
-                const [savedTheme, savedFontSize, savedLang] = await Promise.all([
+                const [savedTheme, savedFontSize, savedLang, savedApp, savedAppLabel] = await Promise.all([
                     AsyncStorage.getItem(STORAGE_KEYS.theme),
                     AsyncStorage.getItem(STORAGE_KEYS.fontSize),
                     AsyncStorage.getItem(STORAGE_KEYS.language),
+                    AsyncStorage.getItem(STORAGE_KEYS.distractionApp),
+                    AsyncStorage.getItem(STORAGE_KEYS.distractionAppLabel),
                 ]);
 
                 if (savedTheme) setThemeModeState(savedTheme as ThemeMode);
@@ -56,6 +64,8 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
                     setLanguageState(savedLang);
                     i18n.changeLanguage(savedLang);
                 }
+                if (savedApp) setDistractionAppState(savedApp);
+                if (savedAppLabel) setDistractionAppLabelState(savedAppLabel);
             } catch {
             } finally {
                 setLoaded(true);
@@ -85,6 +95,18 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         [i18n]
     );
 
+    const setDistractionApp = useCallback((appId: string, appLabel?: string) => {
+        setDistractionAppState(appId);
+        AsyncStorage.setItem(STORAGE_KEYS.distractionApp, appId);
+        if (appLabel) {
+            setDistractionAppLabelState(appLabel);
+            AsyncStorage.setItem(STORAGE_KEYS.distractionAppLabel, appLabel);
+        } else {
+            setDistractionAppLabelState('');
+            AsyncStorage.removeItem(STORAGE_KEYS.distractionAppLabel);
+        }
+    }, []);
+
     const value = useMemo<SettingsContextValue>(
         () => ({
             themeMode,
@@ -92,11 +114,14 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
             fontSize,
             fontScale: FONT_SCALE_MAP[fontSize] ?? 1,
             language,
+            distractionApp,
+            distractionAppLabel,
             setThemeMode,
             setFontSize,
             setLanguage,
+            setDistractionApp,
         }),
-        [themeMode, resolvedTheme, fontSize, language, setThemeMode, setFontSize, setLanguage]
+        [themeMode, resolvedTheme, fontSize, language, distractionApp, distractionAppLabel, setThemeMode, setFontSize, setLanguage, setDistractionApp]
     );
 
     if (!loaded) return null;

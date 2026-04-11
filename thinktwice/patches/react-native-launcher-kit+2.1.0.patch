@@ -1,0 +1,806 @@
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/results.bin b/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/results.bin
+new file mode 100644
+index 0000000..0d259dd
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/results.bin
+@@ -0,0 +1 @@
++o/classes
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/transformed/classes/classes_dex/classes.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/transformed/classes/classes_dex/classes.dex
+new file mode 100644
+index 0000000..e6d9660
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/1265ea5c135381837b58a17a43caa398/transformed/classes/classes_dex/classes.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/results.bin b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/results.bin
+new file mode 100644
+index 0000000..7ed749e
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/results.bin
+@@ -0,0 +1 @@
++o/bundleLibRuntimeToDirDebug
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/BuildConfig.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/BuildConfig.dex
+new file mode 100644
+index 0000000..cf999d6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/BuildConfig.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1$1.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1$1.dex
+new file mode 100644
+index 0000000..cd490e2
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1$1.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1.dex
+new file mode 100644
+index 0000000..3fb4abe
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$1.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2$1.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2$1.dex
+new file mode 100644
+index 0000000..c0a505e
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2$1.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2.dex
+new file mode 100644
+index 0000000..c451d5f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$2.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$AppDetail.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$AppDetail.dex
+new file mode 100644
+index 0000000..feaee1a
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule$AppDetail.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule.dex
+new file mode 100644
+index 0000000..3ae17e3
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitModule.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitPackage.dex b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitPackage.dex
+new file mode 100644
+index 0000000..f13f6a2
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/bundleLibRuntimeToDirDebug_dex/com/launcherkit/LauncherKitPackage.dex differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin
+new file mode 100644
+index 0000000..5a0c162
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/.transforms/f75372f9d1d267c04ddc4a9c8358d47f/transformed/bundleLibRuntimeToDirDebug/desugar_graph.bin differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java b/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java
+new file mode 100644
+index 0000000..0b19682
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/buildConfig/debug/com/launcherkit/BuildConfig.java
+@@ -0,0 +1,12 @@
++/**
++ * Automatically generated file. DO NOT MODIFY
++ */
++package com.launcherkit;
++
++public final class BuildConfig {
++  public static final boolean DEBUG = Boolean.parseBoolean("true");
++  public static final String LIBRARY_PACKAGE_NAME = "com.launcherkit";
++  public static final String BUILD_TYPE = "debug";
++  // Field from default config.
++  public static final boolean IS_NEW_ARCHITECTURE_ENABLED = true;
++}
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt
+new file mode 100644
+index 0000000..262f860
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/CMakeLists.txt
+@@ -0,0 +1,28 @@
++# Copyright (c) Meta Platforms, Inc. and affiliates.
++#
++# This source code is licensed under the MIT license found in the
++# LICENSE file in the root directory of this source tree.
++
++cmake_minimum_required(VERSION 3.13)
++set(CMAKE_VERBOSE_MAKEFILE on)
++
++file(GLOB react_codegen_SRCS CONFIGURE_DEPENDS *.cpp react/renderer/components/LauncherKit/*.cpp)
++
++add_library(
++  react_codegen_LauncherKit
++  OBJECT
++  ${react_codegen_SRCS}
++)
++
++target_include_directories(react_codegen_LauncherKit PUBLIC . react/renderer/components/LauncherKit)
++
++target_link_libraries(
++  react_codegen_LauncherKit
++  fbjni
++  jsi
++  # We need to link different libraries based on whether we are building rncore or not, that's necessary
++  # because we want to break a circular dependency between react_codegen_rncore and reactnative
++  reactnative
++)
++
++target_compile_reactnative_options(react_codegen_LauncherKit PRIVATE)
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit-generated.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit-generated.cpp
+new file mode 100644
+index 0000000..8ca4487
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit-generated.cpp
+@@ -0,0 +1,22 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniCpp.js
++ */
++
++#include "LauncherKit.h"
++
++namespace facebook::react {
++
++
++
++std::shared_ptr<TurboModule> LauncherKit_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params) {
++
++  return nullptr;
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit.h
+new file mode 100644
+index 0000000..7a3cedb
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/LauncherKit.h
+@@ -0,0 +1,24 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleJniH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/JavaTurboModule.h>
++#include <ReactCommon/TurboModule.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++
++
++JSI_EXPORT
++std::shared_ptr<TurboModule> LauncherKit_ModuleProvider(const std::string &moduleName, const JavaTurboModule::InitParams &params);
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.cpp
+new file mode 100644
+index 0000000..0b7dcab
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.cpp
+@@ -0,0 +1,22 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorCpp.js
++ */
++
++#include <react/renderer/components/LauncherKit/ComponentDescriptors.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++void LauncherKit_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry) {
++
++}
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.h
+new file mode 100644
+index 0000000..a323e15
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ComponentDescriptors.h
+@@ -0,0 +1,24 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateComponentDescriptorH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/LauncherKit/ShadowNodes.h>
++#include <react/renderer/core/ConcreteComponentDescriptor.h>
++#include <react/renderer/componentregistry/ComponentDescriptorProviderRegistry.h>
++
++namespace facebook::react {
++
++
++
++void LauncherKit_registerComponentDescriptorsFromCodegen(
++  std::shared_ptr<const ComponentDescriptorProviderRegistry> registry);
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.cpp
+new file mode 100644
+index 0000000..bd19792
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.cpp
+@@ -0,0 +1,16 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterCpp.js
++ */
++
++#include <react/renderer/components/LauncherKit/EventEmitters.h>
++
++
++namespace facebook::react {
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.h
+new file mode 100644
+index 0000000..2845a63
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/EventEmitters.h
+@@ -0,0 +1,17 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateEventEmitterH.js
++ */
++#pragma once
++
++#include <react/renderer/components/view/ViewEventEmitter.h>
++
++
++namespace facebook::react {
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI-generated.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI-generated.cpp
+new file mode 100644
+index 0000000..e1e7db8
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI-generated.cpp
+@@ -0,0 +1,17 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleCpp.js
++ */
++
++#include "LauncherKitJSI.h"
++
++namespace facebook::react {
++
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI.h
+new file mode 100644
+index 0000000..ec16260
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/LauncherKitJSI.h
+@@ -0,0 +1,19 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateModuleH.js
++ */
++
++#pragma once
++
++#include <ReactCommon/TurboModule.h>
++#include <react/bridging/Bridging.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.cpp
+new file mode 100644
+index 0000000..a61a755
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.cpp
+@@ -0,0 +1,19 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsCpp.js
++ */
++
++#include <react/renderer/components/LauncherKit/Props.h>
++#include <react/renderer/core/PropsParserContext.h>
++#include <react/renderer/core/propsConversions.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.h
+new file mode 100644
+index 0000000..870864b
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/Props.h
+@@ -0,0 +1,18 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GeneratePropsH.js
++ */
++#pragma once
++
++
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.cpp
+new file mode 100644
+index 0000000..7067ced
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.cpp
+@@ -0,0 +1,17 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeCpp.js
++ */
++
++#include <react/renderer/components/LauncherKit/ShadowNodes.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.h
+new file mode 100644
+index 0000000..1a6848d
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/ShadowNodes.h
+@@ -0,0 +1,23 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateShadowNodeH.js
++ */
++
++#pragma once
++
++#include <react/renderer/components/LauncherKit/EventEmitters.h>
++#include <react/renderer/components/LauncherKit/Props.h>
++#include <react/renderer/components/LauncherKit/States.h>
++#include <react/renderer/components/view/ConcreteViewShadowNode.h>
++#include <jsi/jsi.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.cpp b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.cpp
+new file mode 100644
+index 0000000..1063e84
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.cpp
+@@ -0,0 +1,16 @@
++
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateCpp.js
++ */
++#include <react/renderer/components/LauncherKit/States.h>
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.h b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.h
+new file mode 100644
+index 0000000..2e55bce
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/jni/react/renderer/components/LauncherKit/States.h
+@@ -0,0 +1,20 @@
++/**
++ * This code was generated by [react-native-codegen](https://www.npmjs.com/package/react-native-codegen).
++ *
++ * Do not edit this file as changes may cause incorrect behavior and will be lost
++ * once the code is regenerated.
++ *
++ * @generated by codegen project: GenerateStateH.js
++ */
++#pragma once
++
++#include <react/renderer/core/StateData.h>
++#ifdef RN_SERIALIZABLE_STATE
++#include <folly/dynamic.h>
++#endif
++
++namespace facebook::react {
++
++
++
++} // namespace facebook::react
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json
+new file mode 100644
+index 0000000..c845b54
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/generated/source/codegen/schema.json
+@@ -0,0 +1 @@
++{"libraryName":"","modules":{}}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+new file mode 100644
+index 0000000..15bafc6
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.launcherkit" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+new file mode 100644
+index 0000000..a9b2088
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aapt_friendly_merged_manifests/debug/processDebugManifest/aapt/output-metadata.json
+@@ -0,0 +1,18 @@
++{
++  "version": 3,
++  "artifactType": {
++    "type": "AAPT_FRIENDLY_MERGED_MANIFESTS",
++    "kind": "Directory"
++  },
++  "applicationId": "com.launcherkit",
++  "variantName": "debug",
++  "elements": [
++    {
++      "type": "SINGLE",
++      "filters": [],
++      "attributes": [],
++      "outputFile": "AndroidManifest.xml"
++    }
++  ],
++  "elementType": "File"
++}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties b/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+new file mode 100644
+index 0000000..1211b1e
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/aar_metadata/debug/writeDebugAarMetadata/aar-metadata.properties
+@@ -0,0 +1,6 @@
++aarFormatVersion=1.0
++aarMetadataVersion=1.0
++minCompileSdk=1
++minCompileSdkExtension=0
++minAndroidGradlePluginVersion=1.0.0
++coreLibraryDesugaringEnabled=false
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json b/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+new file mode 100644
+index 0000000..9e26dfe
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/annotation_processor_list/debug/javaPreCompileDebug/annotationProcessors.json
+@@ -0,0 +1 @@
++{}
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar
+new file mode 100644
+index 0000000..c6e5901
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_library_classes_jar/debug/bundleLibCompileToJarDebug/classes.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar
+new file mode 100644
+index 0000000..84086e0
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_r_class_jar/debug/generateDebugRFile/R.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+new file mode 100644
+index 0000000..da9d30d
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/compile_symbol_list/debug/generateDebugRFile/R.txt
+@@ -0,0 +1 @@
++int anim slide_up 0x0
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat b/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat
+new file mode 100644
+index 0000000..627cb56
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/compiled_local_resources/debug/compileDebugLibraryResources/out/anim_slide_up.xml.flat differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+new file mode 100644
+index 0000000..fc358c3
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties
+@@ -0,0 +1,2 @@
++#Fri Apr 10 21:28:21 WEST 2026
++com.launcherkit.react-native-launcher-kit-main-6\:/anim/slide_up.xml=/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+new file mode 100644
+index 0000000..20545a3
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/debug/packageDebugResources/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="main" generated-set="main$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/res"><file name="slide_up" path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/res/anim/slide_up.xml" qualifiers="" type="anim"/></source></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="debug" generated-set="debug$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/debug/res"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated$Generated" generated="true" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/build/generated/res/resValues/debug"/></dataSet><dataSet aapt-namespace="http://schemas.android.com/apk/res-auto" config="generated" generated-set="generated$Generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/build/generated/res/resValues/debug"/></dataSet><mergedItems/></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+new file mode 100644
+index 0000000..be3ca1c
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugAssets/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/assets"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/debug/assets"/></dataSet><dataSet config="generated" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/build/intermediates/shader_assets/debug/compileDebugShaders/out"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+new file mode 100644
+index 0000000..41afea7
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugJniLibFolders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/jniLibs"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/debug/jniLibs"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+new file mode 100644
+index 0000000..d172454
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/incremental/mergeDebugShaders/merger.xml
+@@ -0,0 +1,2 @@
++<?xml version="1.0" encoding="utf-8"?>
++<merger version="3"><dataSet config="main" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/shaders"/></dataSet><dataSet config="debug" ignore_pattern="!.svn:!.git:!.ds_store:!*.scc:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"><source path="/home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/debug/shaders"/></dataSet></merger>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class
+new file mode 100644
+index 0000000..af8d988
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/BuildConfig.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1$1.class
+new file mode 100644
+index 0000000..48f3a13
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1.class
+new file mode 100644
+index 0000000..68e64d6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2$1.class
+new file mode 100644
+index 0000000..07f042f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2.class
+new file mode 100644
+index 0000000..43ec1e5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$2.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$AppDetail.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$AppDetail.class
+new file mode 100644
+index 0000000..18dd6f5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule$AppDetail.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule.class
+new file mode 100644
+index 0000000..21d5800
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitModule.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitPackage.class b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitPackage.class
+new file mode 100644
+index 0000000..0cb2c97
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/launcherkit/LauncherKitPackage.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+new file mode 100644
+index 0000000..620ebe7
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt
+@@ -0,0 +1,3 @@
++R_DEF: Internal format may change without notice
++local
++anim slide_up
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+new file mode 100644
+index 0000000..920a7a2
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/manifest_merge_blame_file/debug/processDebugManifest/manifest-merger-blame-debug-report.txt
+@@ -0,0 +1,7 @@
++1<?xml version="1.0" encoding="utf-8"?>
++2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++3    package="com.launcherkit" >
++4
++5    <uses-sdk android:minSdkVersion="24" />
++6
++7</manifest>
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+new file mode 100644
+index 0000000..15bafc6
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<manifest xmlns:android="http://schemas.android.com/apk/res/android"
++    package="com.launcherkit" >
++
++    <uses-sdk android:minSdkVersion="24" />
++
++</manifest>
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json b/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+new file mode 100644
+index 0000000..0637a08
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/navigation_json/debug/extractDeepLinksDebug/navigation.json
+@@ -0,0 +1 @@
++[]
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+new file mode 100644
+index 0000000..08f4ebe
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/nested_resources_validation_report/debug/generateDebugResources/nestedResourcesValidationReport.txt
+@@ -0,0 +1 @@
++0 Warning/Error
+\ No newline at end of file
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml b/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml
+new file mode 100644
+index 0000000..18d5c98
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/packaged_res/debug/packageDebugResources/anim/slide_up.xml
+@@ -0,0 +1,6 @@
++<set xmlns:android="http://schemas.android.com/apk/res/android">
++  <translate
++    android:fromYDelta="100%"
++    android:toYDelta="0%"
++    android:duration="500" />
++</set>
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/BuildConfig.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/BuildConfig.class
+new file mode 100644
+index 0000000..af8d988
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/BuildConfig.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1$1.class
+new file mode 100644
+index 0000000..48f3a13
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1.class
+new file mode 100644
+index 0000000..68e64d6
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2$1.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2$1.class
+new file mode 100644
+index 0000000..07f042f
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2$1.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2.class
+new file mode 100644
+index 0000000..43ec1e5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$2.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$AppDetail.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$AppDetail.class
+new file mode 100644
+index 0000000..18dd6f5
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule$AppDetail.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule.class
+new file mode 100644
+index 0000000..21d5800
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitModule.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitPackage.class b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitPackage.class
+new file mode 100644
+index 0000000..0cb2c97
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_dir/debug/bundleLibRuntimeToDirDebug/com/launcherkit/LauncherKitPackage.class differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar
+new file mode 100644
+index 0000000..4aef1c9
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/intermediates/runtime_library_classes_jar/debug/bundleLibRuntimeToJarDebug/classes.jar differ
+diff --git a/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt b/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+new file mode 100644
+index 0000000..2da5a9f
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/intermediates/symbol_list_with_package_name/debug/generateDebugRFile/package-aware-r.txt
+@@ -0,0 +1,2 @@
++com.launcherkit
++anim slide_up
+diff --git a/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt b/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt
+new file mode 100644
+index 0000000..c60546b
+--- /dev/null
++++ b/node_modules/react-native-launcher-kit/android/build/outputs/logs/manifest-merger-debug-report.txt
+@@ -0,0 +1,17 @@
++-- Merging decision tree log ---
++manifest
++ADDED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml:1:1-3:12
++INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml:1:1-3:12
++	package
++		ADDED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml:2:11-36
++		INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml
++	xmlns:android
++		ADDED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml:1:11-69
++uses-sdk
++INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml reason: use-sdk injection requested
++INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml
++INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml
++	android:targetSdkVersion
++		INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml
++	android:minSdkVersion
++		INJECTED from /home/tycho/WebstormProjects/ThinkTwice/thinktwice/node_modules/react-native-launcher-kit/android/src/main/AndroidManifest.xml
+diff --git a/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin b/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin
+new file mode 100644
+index 0000000..b7c3b83
+Binary files /dev/null and b/node_modules/react-native-launcher-kit/android/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin differ
+diff --git a/node_modules/react-native-launcher-kit/commonjs/InstalledApps/index.js b/node_modules/react-native-launcher-kit/commonjs/InstalledApps/index.js
+index 56673c8..d350670 100644
+--- a/node_modules/react-native-launcher-kit/commonjs/InstalledApps/index.js
++++ b/node_modules/react-native-launcher-kit/commonjs/InstalledApps/index.js
+@@ -32,7 +32,7 @@ const installedApps = {
+   async getApps(options) {
+     try {
+       const apps = (await (LauncherKit === null || LauncherKit === void 0 ? void 0 : LauncherKit.getApps((options === null || options === void 0 ? void 0 : options.includeVersion) || false, (options === null || options === void 0 ? void 0 : options.includeAccentColor) || false))) || '[]';
+-      return JSON.parse(apps);
++      return JSON.parse(apps.replace(/[\u0000-\u001F]/g, ""));
+     } catch (error) {
+       if (__DEV__) console.error(error); // Log the error to the console if the app is in development mode.
+       return []; // Return an empty array if an error occurs
+@@ -45,7 +45,7 @@ const installedApps = {
+   async getSortedApps(options) {
+     try {
+       const apps = (await (LauncherKit === null || LauncherKit === void 0 ? void 0 : LauncherKit.getApps((options === null || options === void 0 ? void 0 : options.includeVersion) || false, (options === null || options === void 0 ? void 0 : options.includeAccentColor) || false))) || '[]';
+-      const tempApps = JSON.parse(apps); // Attempt to parse the JSON data returned by `LauncherKit.getApps()`.
++      const tempApps = JSON.parse(apps.replace(/[\u0000-\u001F]/g, "")); // Attempt to parse the JSON data returned by `LauncherKit.getApps()`.
+       return tempApps.sort((a, b) => {
+         var _a$label, _b$label;
+         return (_a$label = a.label) === null || _a$label === void 0 ? void 0 : _a$label.toLowerCase().localeCompare((_b$label = b.label) === null || _b$label === void 0 ? void 0 : _b$label.toLowerCase());
+diff --git a/node_modules/react-native-launcher-kit/module/InstalledApps/index.js b/node_modules/react-native-launcher-kit/module/InstalledApps/index.js
+index 0dbd99b..4ae5f5e 100644
+--- a/node_modules/react-native-launcher-kit/module/InstalledApps/index.js
++++ b/node_modules/react-native-launcher-kit/module/InstalledApps/index.js
+@@ -25,7 +25,7 @@ const installedApps = {
+   async getApps(options) {
+     try {
+       const apps = (await (LauncherKit === null || LauncherKit === void 0 ? void 0 : LauncherKit.getApps((options === null || options === void 0 ? void 0 : options.includeVersion) || false, (options === null || options === void 0 ? void 0 : options.includeAccentColor) || false))) || '[]';
+-      return JSON.parse(apps);
++      return JSON.parse(apps.replace(/[\u0000-\u001F]/g, ""));
+     } catch (error) {
+       if (__DEV__) console.error(error); // Log the error to the console if the app is in development mode.
+       return []; // Return an empty array if an error occurs
+@@ -38,7 +38,7 @@ const installedApps = {
+   async getSortedApps(options) {
+     try {
+       const apps = (await (LauncherKit === null || LauncherKit === void 0 ? void 0 : LauncherKit.getApps((options === null || options === void 0 ? void 0 : options.includeVersion) || false, (options === null || options === void 0 ? void 0 : options.includeAccentColor) || false))) || '[]';
+-      const tempApps = JSON.parse(apps); // Attempt to parse the JSON data returned by `LauncherKit.getApps()`.
++      const tempApps = JSON.parse(apps.replace(/[\u0000-\u001F]/g, "")); // Attempt to parse the JSON data returned by `LauncherKit.getApps()`.
+       return tempApps.sort((a, b) => {
+         var _a$label, _b$label;
+         return (_a$label = a.label) === null || _a$label === void 0 ? void 0 : _a$label.toLowerCase().localeCompare((_b$label = b.label) === null || _b$label === void 0 ? void 0 : _b$label.toLowerCase());

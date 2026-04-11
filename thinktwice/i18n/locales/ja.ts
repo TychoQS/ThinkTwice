@@ -17,6 +17,10 @@ export default {
       title: 'アンケート',
       description: '簡単な質問に答えて決断を評価する',
     },
+    crisis: {
+      title: '危機ツールキット',
+      description: '強迫的なパターンを断ち切るための迅速なツール',
+    },
   },
   chat: {
     title: 'チャット',
@@ -48,8 +52,39 @@ export default {
     fontMedium: '中',
     fontLarge: '大',
     language: '言語',
+    distractionApp: '気を紛らわすアプリ',
+    selectApp: 'アプリを選択...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: 'ランダムなWikipedia記事',
+    },
   },
   network: {
     offlineWarning: '現在オフラインです。',
+  },
+  crisis: {
+    title: '危機ツールキット',
+    subtitle: '強迫的なパターンを断ち切る方法',
+    description: '強い購買衝動を感じていますか？これらのツールを使用して、時間と距離を置いてください。',
+    waitingRoom: {
+      title: '待合室',
+      description: '購入する前に10分間待って落ち着く',
+    },
+    instantDistraction: {
+      title: '即座の気晴らし',
+      description: '気を紛らわすために事前定義されたアプリを開く',
+      notSetTitle: 'アプリが選択されていません',
+      notSetDesc: 'まず設定で気を紛らわすアプリを選択してください。',
+    },
+  },
+  waitingRoom: {
+    title: '待合室',
+    subtitle: '深呼吸して時間を過ごす',
+    timeRemaining: '残り時間:',
+    completed: '時間です！まだ購入したいですか？',
+    leave: '待合室を出る',
   },
 };

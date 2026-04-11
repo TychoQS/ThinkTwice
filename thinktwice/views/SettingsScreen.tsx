@@ -1,8 +1,10 @@
-import { StyleSheet, Pressable, ScrollView, View } from 'react-native';
+import { StyleSheet, Pressable, ScrollView, View, Modal, FlatList, Image, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { useState, useEffect } from 'react';
+import { Alert } from 'react-native';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -23,11 +25,11 @@ const LANGUAGES = [
 ];
 
 function SegmentedControl<T extends string>({
-                                                options,
-                                                value,
-                                                onChange,
-                                                colors,
-                                            }: {
+    options,
+    value,
+    onChange,
+    colors,
+}: {
     options: { key: T; label: string }[];
     value: T;
     onChange: (v: T) => void;
@@ -70,11 +72,41 @@ export default function SettingsScreen() {
         themeMode,
         fontSize,
         language,
+        distractionApp,
+        distractionAppLabel,
         setThemeMode,
         setFontSize,
         setLanguage,
+        setDistractionApp,
     } = useSettings();
     const colors = Colors[resolvedTheme];
+
+    const [apps, setApps] = useState<any[]>([]);
+    const [isAppsLoading, setIsAppsLoading] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
+    useEffect(() => {
+        if (isModalVisible && apps.length === 0 && !isAppsLoading) {
+            setIsAppsLoading(true);
+            try {
+                const { InstalledApps } = require('react-native-launcher-kit');
+                InstalledApps.getSortedApps()
+                    .then((installedApps: any[]) => {
+                        setApps(installedApps.filter(app => app.label));
+                    })
+                    .catch((err: any) => console.warn('Could not load apps', err))
+                    .finally(() => setIsAppsLoading(false));
+            } catch (error) {
+                console.warn('react-native-launcher-kit is not available', error);
+                setIsAppsLoading(false);
+                setApps([]);
+                Alert.alert(
+                    'Native Module Missing',
+                    'Please rebuild the app with npx expo run:android to use this feature.'
+                );
+            }
+        }
+    }, [isModalVisible, apps.length, isAppsLoading]);
 
     const themeOptions: { key: ThemeMode; label: string }[] = [
         { key: 'system', label: t('settings.themeSystem') },
@@ -175,7 +207,83 @@ export default function SettingsScreen() {
                         })}
                     </View>
                 </View>
+
+                <View style={styles.section}>
+                    <ThemedText
+                        type="defaultSemiBold"
+                        style={[styles.sectionTitle, { color: colors.textSecondary }]}
+                    >
+                        {t('settings.distractionApp')}
+                    </ThemedText>
+                    <View style={[styles.optionGroup, { backgroundColor: colors.surface, borderColor: colors.border }]}>
+                        <Pressable
+                            onPress={() => setIsModalVisible(true)}
+                            style={styles.option}
+                        >
+                            <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', gap: 12, paddingRight: 8 }}>
+                                <Ionicons name="apps-outline" size={20} color={colors.text} />
+                                <ThemedText style={{ color: colors.text, flex: 1 }} numberOfLines={1}>
+                                    {distractionAppLabel || distractionApp || t('settings.selectApp', 'Seleccionar app...')}
+                                </ThemedText>
+                            </View>
+                            <Ionicons name="chevron-forward" size={20} color={colors.textSecondary} />
+                        </Pressable>
+                    </View>
+                </View>
             </ScrollView>
+
+            {/* Apps Modal */}
+            <Modal
+                visible={isModalVisible}
+                animationType="slide"
+                presentationStyle="pageSheet"
+                onRequestClose={() => setIsModalVisible(false)}
+            >
+                <ThemedView style={styles.modalContainer} lightColor={colors.background} darkColor={colors.background}>
+                    <View style={[styles.modalHeader, { borderBottomColor: colors.border }]}>
+                        <Pressable onPress={() => setIsModalVisible(false)} style={styles.headerBtn}>
+                            <Ionicons name="close" size={24} color={colors.text} />
+                        </Pressable>
+                        <ThemedText type="defaultSemiBold" style={styles.headerTitle}>
+                            {t('settings.selectApp', 'Seleccionar App')}
+                        </ThemedText>
+                        <View style={styles.headerBtn} />
+                    </View>
+
+                    {isAppsLoading ? (
+                        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+                            <ActivityIndicator size="large" color={colors.primary} />
+                        </View>
+                    ) : (
+                        <FlatList
+                            data={apps}
+                            keyExtractor={item => item.packageName}
+                            renderItem={({ item }) => (
+                                <Pressable
+                                    style={({ pressed }) => [
+                                        styles.appItem,
+                                        { backgroundColor: pressed ? colors.surfaceVariant : 'transparent' }
+                                    ]}
+                                    onPress={() => {
+                                        setDistractionApp(item.packageName, item.label);
+                                        setIsModalVisible(false);
+                                    }}
+                                >
+                                    {item.icon ? (
+                                        <Image source={{ uri: `data:image/png;base64,${item.icon}` }} style={styles.appIcon} />
+                                    ) : (
+                                        <View style={[styles.appIcon, { backgroundColor: colors.surfaceVariant }]} />
+                                    )}
+                                    <ThemedText style={{ flex: 1 }}>{item.label}</ThemedText>
+                                    {distractionApp === item.packageName && (
+                                        <Ionicons name="checkmark" size={20} color={colors.primary} />
+                                    )}
+                                </Pressable>
+                            )}
+                        />
+                    )}
+                </ThemedView>
+            </Modal>
         </ThemedView>
     );
 }
@@ -241,5 +349,25 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         paddingVertical: 14,
         paddingHorizontal: 16,
+    },
+    modalContainer: {
+        flex: 1,
+    },
+    modalHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 12,
+        borderBottomWidth: 1,
+    },
+    appItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        padding: 16,
+        gap: 16,
+    },
+    appIcon: {
+        width: 40,
+        height: 40,
+        borderRadius: 8,
     },
 });

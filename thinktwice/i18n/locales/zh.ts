@@ -16,6 +16,10 @@ export default {
       title: '问卷',
       description: '回答快速问题以评估你的决定',
     },
+    crisis: {
+      title: '危机工具箱',
+      description: '打破强迫性消费模式的快捷工具',
+    },
   },
   chat: {
     title: '聊天',
@@ -46,8 +50,39 @@ export default {
     fontMedium: '中',
     fontLarge: '大',
     language: '语言',
+    distractionApp: '转移注意力应用',
+    selectApp: '选择应用...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: '随机维基百科文章',
+    },
   },
   network: {
     offlineWarning: '您当前处于离线状态。',
+  },
+  crisis: {
+    title: '危机工具箱',
+    subtitle: '打破强迫模式的方法',
+    description: '有强烈的购买冲动？使用这些工具给自己一点时间和距离。',
+    waitingRoom: {
+      title: '等待室',
+      description: '等待10分钟冷静下来',
+    },
+    instantDistraction: {
+      title: '即刻分心',
+      description: '打开预设应用以转移注意力',
+      notSetTitle: '未选择应用',
+      notSetDesc: '请先在设置中选择重定向应用程序。',
+    },
+  },
+  waitingRoom: {
+    title: '等待室',
+    subtitle: '深呼吸，让时间流逝',
+    timeRemaining: '剩余时间:',
+    completed: '时间到！您还想购买吗？',
+    leave: '离开等待室',
   },
 };

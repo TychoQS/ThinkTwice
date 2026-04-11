@@ -1,4 +1,4 @@
-import { StyleSheet, Pressable, useWindowDimensions, View } from 'react-native';
+import { StyleSheet, Pressable, useWindowDimensions, View, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from 'react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -17,14 +17,16 @@ interface OptionCardProps {
   accentColor: string;
   onPress: () => void;
   colors: typeof Colors.light;
+  fullWidth?: boolean;
 }
 
-function OptionCard({ icon, title, description, accentColor, onPress, colors }: OptionCardProps) {
+function OptionCard({ icon, title, description, accentColor, onPress, colors, fullWidth }: OptionCardProps) {
   return (
     <Pressable
       onPress={onPress}
       style={({ pressed }) => [
         styles.card,
+        fullWidth ? { flexDirection: 'row', alignItems: 'center' } : { flex: 1, alignItems: 'center' },
         {
           backgroundColor: colors.surface,
           borderColor: colors.border,
@@ -35,12 +37,14 @@ function OptionCard({ icon, title, description, accentColor, onPress, colors }: 
       <View style={[styles.cardIcon, { backgroundColor: accentColor + '15' }]}>
         <Ionicons name={icon} size={36} color={accentColor} />
       </View>
-      <ThemedText type="defaultSemiBold" style={styles.cardTitle}>
-        {title}
-      </ThemedText>
-      <ThemedText style={[styles.cardDescription, { color: colors.textSecondary }]}>
-        {description}
-      </ThemedText>
+      <View style={fullWidth ? { flex: 1, alignItems: 'flex-start' } : { alignItems: 'center' }}>
+        <ThemedText type="defaultSemiBold" style={[styles.cardTitle, fullWidth && { textAlign: 'left' }]}>
+          {title}
+        </ThemedText>
+        <ThemedText style={[styles.cardDescription, { color: colors.textSecondary }, fullWidth && { textAlign: 'left' }]} numberOfLines={fullWidth ? 3 : undefined}>
+          {description}
+        </ThemedText>
+      </View>
     </Pressable>
   );
 }
@@ -77,6 +81,7 @@ export default function LobbyScreen() {
         <View style={styles.hamburger} />
       </View>
 
+      <ScrollView contentContainerStyle={{ paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
       {/* Header */}
       <View style={[styles.header, { paddingHorizontal: horizontalPad }]}>
         <ThemedText
@@ -111,6 +116,19 @@ export default function LobbyScreen() {
           onPress={() => router.push('/questionnaire')}
         />
       </View>
+
+      <View style={{ paddingHorizontal: horizontalPad, marginTop: 12 }}>
+        <OptionCard
+          icon="medical-outline"
+          title={t('lobby.crisis.title')}
+          description={t('lobby.crisis.description')}
+          accentColor={colors.secondary}
+          colors={colors}
+          onPress={() => router.push('/crisis')}
+          fullWidth
+        />
+      </View>
+      </ScrollView>
     </ThemedView>
   );
 }
@@ -149,12 +167,10 @@ const styles = StyleSheet.create({
     gap: 12,
   },
   card: {
-    flex: 1,
-    alignItems: 'center',
     padding: 20,
     borderRadius: 16,
     borderWidth: 1,
-    gap: 10,
+    gap: 12,
   },
   cardIcon: {
     width: 64,

@@ -17,6 +17,10 @@ export default {
       title: 'Fragebogen',
       description: 'Beantworte kurze Fragen, um deine Entscheidung zu bewerten',
     },
+    crisis: {
+      title: 'Krisen-Toolkit',
+      description: 'Schnelle Werkzeuge, um das zwanghafte Muster zu durchbrechen',
+    },
   },
   chat: {
     title: 'Chat',
@@ -49,8 +53,39 @@ export default {
     fontMedium: 'Mittel',
     fontLarge: 'Groß',
     language: 'Sprache',
+    distractionApp: 'Ablenkungs-App',
+    selectApp: 'App auswählen...',
+    apps: {
+      youtube: 'YouTube',
+      spotify: 'Spotify',
+      instagram: 'Instagram',
+      duolingo: 'Duolingo',
+      browser: 'Zufälliger Wikipedia-Artikel',
+    },
   },
   network: {
     offlineWarning: 'Du bist momentan offline.',
+  },
+  crisis: {
+    title: 'Krisen-Toolkit',
+    subtitle: 'Methoden, um das zwanghafte Muster zu durchbrechen',
+    description: 'Verspüren Sie einen starken Drang zu kaufen? Verwenden Sie diese Werkzeuge, um sich etwas Zeit und Abstand zu geben.',
+    waitingRoom: {
+      title: 'Wartezimmer',
+      description: 'Warten Sie 10 Minuten, um sich abzukühlen',
+    },
+    instantDistraction: {
+      title: 'Sofortige Ablenkung',
+      description: 'Öffnen Sie Ihre vordefinierte App, um auf andere Gedanken zu kommen',
+      notSetTitle: 'Keine App gewählt',
+      notSetDesc: 'Bitte wählen Sie zuerst eine Ablenkungs-App in den Einstellungen.',
+    },
+  },
+  waitingRoom: {
+    title: 'Wartezimmer',
+    subtitle: 'Atmen Sie tief durch und lassen Sie die Zeit vergehen',
+    timeRemaining: 'Verbleibende Zeit:',
+    completed: 'Zeit abgelaufen! Möchten Sie es immer noch kaufen?',
+    leave: 'Wartezimmer verlassen',
   },
 };
