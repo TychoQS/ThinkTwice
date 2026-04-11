@@ -1,6 +1,6 @@
 import { StyleSheet, Pressable, View, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -108,7 +108,7 @@ function ModeSelectionPhase({
           accentColor={colors.primaryDark}
           disabled
           badge={t('questionnaire.customTest.comingSoon')}
-          onPress={() => {}}
+          onPress={() => { }}
           colors={colors}
         />
       </View>

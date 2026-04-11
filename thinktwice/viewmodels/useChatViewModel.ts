@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 import type { FlatList } from 'react-native';
 import type { ChatMessage } from '@/models/chat';
 import { sendMessageToAI } from '@/services/aiService';

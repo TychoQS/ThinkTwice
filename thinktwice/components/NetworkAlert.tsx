@@ -1,5 +1,5 @@
 import { StyleSheet, Modal, View, Pressable } from 'react-native';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 import { useState, useEffect } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -38,7 +38,7 @@ export function NetworkAlert() {
           <View style={[styles.iconCircle, { backgroundColor: colors.bubbleError }]}>
             <Ionicons name="cloud-offline" size={32} color={colors.bubbleErrorText} />
           </View>
-          
+
           <ThemedText style={[styles.title, { fontSize: 16 * fontScale }]}>
             {t('network.offlineWarning')}
           </ThemedText>

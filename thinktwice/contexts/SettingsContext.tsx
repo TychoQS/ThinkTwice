@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { useColorScheme as useDeviceColorScheme } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 
 type ThemeMode = 'system' | 'light' | 'dark';
 type FontSize = 'small' | 'medium' | 'large';
@@ -12,6 +12,7 @@ interface SettingsContextValue {
     resolvedTheme: ResolvedTheme;
     fontSize: FontSize;
     fontScale: number;
+    language: string;
     distractionApp: string;
     distractionAppLabel: string;
     setThemeMode: (mode: ThemeMode) => void;

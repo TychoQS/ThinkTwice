@@ -1,6 +1,6 @@
 import { StyleSheet, Pressable, useWindowDimensions, View, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { DrawerActions, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -82,52 +82,52 @@ export default function LobbyScreen() {
       </View>
 
       <ScrollView contentContainerStyle={{ paddingBottom: 32 }} showsVerticalScrollIndicator={false}>
-      {/* Header */}
-      <View style={[styles.header, { paddingHorizontal: horizontalPad }]}>
-        <ThemedText
-          type="title"
-          style={[styles.title, { fontSize: 26 * fontScale }]}
-        >
-          {t('lobby.title')}
-        </ThemedText>
-        <ThemedText
-          style={[styles.subtitle, { color: colors.textSecondary, fontSize: 14 * fontScale }]}
-        >
-          {t('lobby.subtitle')}
-        </ThemedText>
-      </View>
+        {/* Header */}
+        <View style={[styles.header, { paddingHorizontal: horizontalPad }]}>
+          <ThemedText
+            type="title"
+            style={[styles.title, { fontSize: 26 * fontScale }]}
+          >
+            {t('lobby.title')}
+          </ThemedText>
+          <ThemedText
+            style={[styles.subtitle, { color: colors.textSecondary, fontSize: 14 * fontScale }]}
+          >
+            {t('lobby.subtitle')}
+          </ThemedText>
+        </View>
 
-      {/* Horizontal option cards */}
-      <View style={[styles.cardsRow, { paddingHorizontal: horizontalPad }]}>
-        <OptionCard
-          icon="chatbubbles-outline"
-          title={t('lobby.chatbot.title')}
-          description={t('lobby.chatbot.description')}
-          accentColor={colors.primary}
-          colors={colors}
-          onPress={() => router.push('/chat')}
-        />
-        <OptionCard
-          icon="clipboard-outline"
-          title={t('lobby.questionnaire.title')}
-          description={t('lobby.questionnaire.description')}
-          accentColor={colors.primaryLight}
-          colors={colors}
-          onPress={() => router.push('/questionnaire')}
-        />
-      </View>
+        {/* Horizontal option cards */}
+        <View style={[styles.cardsRow, { paddingHorizontal: horizontalPad }]}>
+          <OptionCard
+            icon="chatbubbles-outline"
+            title={t('lobby.chatbot.title')}
+            description={t('lobby.chatbot.description')}
+            accentColor={colors.primary}
+            colors={colors}
+            onPress={() => router.push('/chat')}
+          />
+          <OptionCard
+            icon="clipboard-outline"
+            title={t('lobby.questionnaire.title')}
+            description={t('lobby.questionnaire.description')}
+            accentColor={colors.primaryLight}
+            colors={colors}
+            onPress={() => router.push('/questionnaire')}
+          />
+        </View>
 
-      <View style={{ paddingHorizontal: horizontalPad, marginTop: 12 }}>
-        <OptionCard
-          icon="medical-outline"
-          title={t('lobby.crisis.title')}
-          description={t('lobby.crisis.description')}
-          accentColor={colors.secondary}
-          colors={colors}
-          onPress={() => router.push('/crisis')}
-          fullWidth
-        />
-      </View>
+        <View style={{ paddingHorizontal: horizontalPad, marginTop: 12 }}>
+          <OptionCard
+            icon="medical-outline"
+            title={t('lobby.crisis.title')}
+            description={t('lobby.crisis.description')}
+            accentColor={colors.secondary}
+            colors={colors}
+            onPress={() => router.push('/crisis')}
+            fullWidth
+          />
+        </View>
       </ScrollView>
     </ThemedView>
   );

@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable, Switch, View } from 'react-native';
 import { DrawerContentScrollView, type DrawerContentComponentProps } from '@react-navigation/drawer';
 import { useRouter, usePathname } from 'expo-router';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from '@/node_modules/react-i18next';
 import { Ionicons } from '@expo/vector-icons';
 
 import { ThemedText } from '@/components/themed-text';
