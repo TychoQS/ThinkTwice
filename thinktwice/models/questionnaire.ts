@@ -15,3 +15,17 @@ export interface QuestionnaireResult {
   maxScore: number;
   recommendation: 'proceed' | 'wait' | 'avoid';
 }
+
+export type BuyerProfile = 'impulsive' | 'dealHunter' | 'functional' | 'budgetConstrained';
+
+export interface DetectionOption {
+  id: string;
+  textKey: string;
+  profile: BuyerProfile;
+}
+
+export interface DetectionQuestion {
+  id: string;
+  textKey: string;
+  options: DetectionOption[];
+}

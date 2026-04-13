@@ -9,7 +9,14 @@ import { ThemedView } from '@/components/themed-view';
 import { Colors } from '@/constants/theme';
 import { useSettings } from '@/contexts/SettingsContext';
 import { useQuestionnaireViewModel } from '@/viewmodels/useQuestionnaireViewModel';
-import { QuestionnaireResult } from '@/models/questionnaire';
+import { QuestionnaireResult, BuyerProfile } from '@/models/questionnaire';
+
+const PROFILE_LABEL_KEYS: Record<BuyerProfile, string> = {
+  impulsive: 'questionnaire.profiles.impulsive.label',
+  dealHunter: 'questionnaire.profiles.dealHunter.label',
+  functional: 'questionnaire.profiles.functional.label',
+  budgetConstrained: 'questionnaire.profiles.budgetConstrained.label',
+};
 
 // ─── Mode Selection ───────────────────────────────────────────────────────────
 
@@ -74,10 +81,12 @@ function ModeCard({
 
 function ModeSelectionPhase({
   onStartQuickTest,
+  onStartProfileTest,
   colors,
   fontScale,
 }: {
   onStartQuickTest: () => void;
+  onStartProfileTest: () => void;
   colors: typeof Colors.light;
   fontScale: number;
 }) {
@@ -106,11 +115,138 @@ function ModeSelectionPhase({
           title={t('questionnaire.customTest.title')}
           description={t('questionnaire.customTest.description')}
           accentColor={colors.primaryDark}
-          disabled
-          badge={t('questionnaire.customTest.comingSoon')}
-          onPress={() => { }}
+          onPress={onStartProfileTest}
           colors={colors}
         />
+      </View>
+    </View>
+  );
+}
+
+// ─── Profile Detection ────────────────────────────────────────────────────────
+
+function ProfileDetectionPhase({
+  detectionIndex,
+  totalDetectionQuestions,
+  questionTextKey,
+  options,
+  selectedOptionId,
+  canGoNext,
+  isLastDetectionQuestion,
+  onSelectOption,
+  onNext,
+  onBack,
+  colors,
+  fontScale,
+}: {
+  detectionIndex: number;
+  totalDetectionQuestions: number;
+  questionTextKey: string;
+  options: { id: string; textKey: string }[];
+  selectedOptionId: string | null;
+  canGoNext: boolean;
+  isLastDetectionQuestion: boolean;
+  onSelectOption: (id: string) => void;
+  onNext: () => void;
+  onBack: () => void;
+  colors: typeof Colors.light;
+  fontScale: number;
+}) {
+  const { t } = useTranslation();
+  const progress = (detectionIndex + 1) / totalDetectionQuestions;
+
+  return (
+    <View style={styles.phaseContainer}>
+      {/* Header */}
+      <ThemedText type="defaultSemiBold" style={[styles.detectionTitle, { fontSize: 18 * fontScale }]}>
+        {t('questionnaire.profileDetection.title')}
+      </ThemedText>
+      <ThemedText style={[styles.detectionSubtitle, { color: colors.textSecondary, fontSize: 13 * fontScale }]}>
+        {t('questionnaire.profileDetection.subtitle')}
+      </ThemedText>
+
+      {/* Progress */}
+      <View style={styles.progressContainer}>
+        <ThemedText style={[styles.progressText, { color: colors.textSecondary, fontSize: 12 * fontScale }]}>
+          {t('questionnaire.progress', { current: detectionIndex + 1, total: totalDetectionQuestions })}
+        </ThemedText>
+        <View style={[styles.progressTrack, { backgroundColor: colors.surfaceVariant }]}>
+          <View
+            style={[
+              styles.progressFill,
+              { backgroundColor: colors.primaryDark, width: `${progress * 100}%` },
+            ]}
+          />
+        </View>
+      </View>
+
+      {/* Question */}
+      <ThemedText type="defaultSemiBold" style={[styles.questionText, { fontSize: 20 * fontScale }]}>
+        {t(questionTextKey)}
+      </ThemedText>
+
+      {/* Options */}
+      <ScrollView style={styles.optionsList} contentContainerStyle={styles.optionsContent} showsVerticalScrollIndicator={false}>
+        {options.map(option => {
+          const isSelected = selectedOptionId === option.id;
+          return (
+            <Pressable
+              key={option.id}
+              onPress={() => onSelectOption(option.id)}
+              style={({ pressed }) => [
+                styles.optionCard,
+                {
+                  backgroundColor: isSelected ? colors.primaryDark + '18' : colors.surface,
+                  borderColor: isSelected ? colors.primaryDark : colors.border,
+                  opacity: pressed ? 0.8 : 1,
+                },
+              ]}
+            >
+              <View
+                style={[
+                  styles.optionIndicator,
+                  {
+                    borderColor: isSelected ? colors.primaryDark : colors.border,
+                    backgroundColor: isSelected ? colors.primaryDark : 'transparent',
+                  },
+                ]}
+              >
+                {isSelected && <Ionicons name="checkmark" size={12} color="#fff" />}
+              </View>
+              <ThemedText style={[styles.optionText, { fontSize: 15 * fontScale }]}>
+                {t(option.textKey)}
+              </ThemedText>
+            </Pressable>
+          );
+        })}
+      </ScrollView>
+
+      {/* Navigation */}
+      <View style={styles.navRow}>
+        <Pressable onPress={onBack} style={[styles.navButton, { backgroundColor: colors.surfaceVariant }]}>
+          <Ionicons name="arrow-back" size={18} color={colors.text} />
+          <ThemedText style={[styles.navButtonText, { fontSize: 14 * fontScale }]}>
+            {t('questionnaire.back')}
+          </ThemedText>
+        </Pressable>
+        <Pressable
+          onPress={onNext}
+          disabled={!canGoNext}
+          style={[
+            styles.navButton,
+            styles.navButtonPrimary,
+            { backgroundColor: canGoNext ? colors.primaryDark : colors.surfaceVariant },
+          ]}
+        >
+          <ThemedText style={[styles.navButtonText, { fontSize: 14 * fontScale, color: canGoNext ? '#fff' : colors.textSecondary }]}>
+            {isLastDetectionQuestion ? t('questionnaire.start') : t('questionnaire.next')}
+          </ThemedText>
+          <Ionicons
+            name={isLastDetectionQuestion ? 'checkmark-circle-outline' : 'arrow-forward'}
+            size={18}
+            color={canGoNext ? '#fff' : colors.textSecondary}
+          />
+        </Pressable>
       </View>
     </View>
   );
@@ -126,6 +262,7 @@ function QuestionsPhase({
   selectedOptionId,
   canGoNext,
   isLastQuestion,
+  profileBadge,
   onSelectOption,
   onNext,
   onBack,
@@ -139,6 +276,7 @@ function QuestionsPhase({
   selectedOptionId: string | null;
   canGoNext: boolean;
   isLastQuestion: boolean;
+  profileBadge?: string;
   onSelectOption: (id: string) => void;
   onNext: () => void;
   onBack: () => void;
@@ -150,6 +288,15 @@ function QuestionsPhase({
 
   return (
     <View style={styles.phaseContainer}>
+      {/* Profile badge */}
+      {profileBadge && (
+        <View style={[styles.profileBadge, { backgroundColor: colors.surfaceVariant }]}>
+          <Ionicons name="person-outline" size={12} color={colors.textSecondary} />
+          <ThemedText style={[styles.profileBadgeText, { color: colors.textSecondary, fontSize: 11 * fontScale }]}>
+            {profileBadge}
+          </ThemedText>
+        </View>
+      )}
       {/* Progress */}
       <View style={styles.progressContainer}>
         <ThemedText style={[styles.progressText, { color: colors.textSecondary, fontSize: 12 * fontScale }]}>
@@ -361,11 +508,15 @@ export default function QuestionnaireScreen() {
 
   const vm = useQuestionnaireViewModel();
 
+  const profileBadge = vm.detectedProfile ? t(PROFILE_LABEL_KEYS[vm.detectedProfile]) : undefined;
+
   function handleBack() {
     if (vm.phase === 'mode-selection') {
       router.back();
     } else if (vm.phase === 'result') {
       vm.reset();
+    } else if (vm.phase === 'profile-detection') {
+      vm.goBackDetection();
     } else {
       vm.goBack();
     }
@@ -392,6 +543,24 @@ export default function QuestionnaireScreen() {
       {vm.phase === 'mode-selection' && (
         <ModeSelectionPhase
           onStartQuickTest={vm.startQuickTest}
+          onStartProfileTest={vm.startProfileTest}
+          colors={colors}
+          fontScale={fontScale}
+        />
+      )}
+
+      {vm.phase === 'profile-detection' && vm.currentDetectionQuestion && (
+        <ProfileDetectionPhase
+          detectionIndex={vm.detectionIndex}
+          totalDetectionQuestions={vm.totalDetectionQuestions}
+          questionTextKey={vm.currentDetectionQuestion.textKey}
+          options={vm.currentDetectionQuestion.options}
+          selectedOptionId={vm.detectionOptionId}
+          canGoNext={vm.canGoNextDetection}
+          isLastDetectionQuestion={vm.isLastDetectionQuestion}
+          onSelectOption={vm.selectDetectionOption}
+          onNext={vm.goNextDetection}
+          onBack={vm.goBackDetection}
           colors={colors}
           fontScale={fontScale}
         />
@@ -406,6 +575,7 @@ export default function QuestionnaireScreen() {
           selectedOptionId={vm.selectedOptionId}
           canGoNext={vm.canGoNext}
           isLastQuestion={vm.isLastQuestion}
+          profileBadge={profileBadge}
           onSelectOption={vm.selectOption}
           onNext={vm.goNext}
           onBack={vm.goBack}
@@ -504,6 +674,28 @@ const styles = StyleSheet.create({
   },
   badgeText: {
     fontSize: 11,
+  },
+  // Profile detection
+  detectionTitle: {
+    marginBottom: 4,
+  },
+  detectionSubtitle: {
+    lineHeight: 18,
+    marginBottom: 20,
+  },
+  // Profile badge (shown during questions phase)
+  profileBadge: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    gap: 4,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 20,
+    marginBottom: 12,
+  },
+  profileBadgeText: {
+    fontWeight: '600',
   },
   // Questions
   progressContainer: {
