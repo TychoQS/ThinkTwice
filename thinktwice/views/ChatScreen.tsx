@@ -7,6 +7,7 @@ import {
   Platform,
   View,
   Animated,
+  Image,
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTranslation } from '@/node_modules/react-i18next';
@@ -126,17 +127,26 @@ function MessageBubble({
             style={styles.errorIcon}
           />
         )}
-        <ThemedText
-          style={[
-            styles.bubbleText,
-            {
-              color: textColor,
-              fontSize: 15 * fontScale,
-            },
-          ]}
-        >
-          {message.text}
-        </ThemedText>
+        {message.imageDataUrl && (
+          <Image
+            source={{ uri: message.imageDataUrl }}
+            style={styles.bubbleImage}
+            resizeMode="cover"
+          />
+        )}
+        {message.text ? (
+          <ThemedText
+            style={[
+              styles.bubbleText,
+              {
+                color: textColor,
+                fontSize: 15 * fontScale,
+              },
+            ]}
+          >
+            {message.text}
+          </ThemedText>
+        ) : null}
       </View>
     </View>
   );
@@ -151,7 +161,7 @@ export default function ChatScreen() {
   const { resolvedTheme, fontScale } = useSettings();
   const colors = Colors[resolvedTheme];
 
-  const { messages, inputText, setInputText, sendMessage, isLoading, flatListRef } =
+  const { messages, inputText, setInputText, sendMessage, isLoading, flatListRef, pendingImageDataUrl, pickImage, clearPendingImage } =
     useChatViewModel();
 
   return (
@@ -210,51 +220,72 @@ export default function ChatScreen() {
             },
           ]}
         >
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={[
-                styles.input,
+          {/* Pending image preview */}
+          {pendingImageDataUrl && (
+            <View style={styles.imagePreviewContainer}>
+              <Image source={{ uri: pendingImageDataUrl }} style={styles.imagePreview} resizeMode="cover" />
+              <Pressable onPress={clearPendingImage} style={[styles.imageRemoveBtn, { backgroundColor: colors.surface }]}>
+                <Ionicons name="close-circle" size={20} color={colors.textSecondary} />
+              </Pressable>
+            </View>
+          )}
+          <View style={styles.inputRow}>
+            <Pressable
+              onPress={pickImage}
+              disabled={isLoading}
+              style={({ pressed }) => [
+                styles.iconButton,
+                { opacity: pressed ? 0.6 : isLoading ? 0.4 : 1 },
+              ]}
+            >
+              <Ionicons name="image-outline" size={22} color={colors.textSecondary} />
+            </Pressable>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={[
+                  styles.input,
+                  {
+                    backgroundColor: colors.inputBackground,
+                    borderColor: colors.inputBorder,
+                    color: colors.text,
+                    fontSize: 15 * fontScale,
+                  },
+                ]}
+                placeholder={t('chat.inputPlaceholder')}
+                placeholderTextColor={colors.textSecondary}
+                value={inputText}
+                onChangeText={setInputText}
+                multiline
+                maxLength={500}
+                onSubmitEditing={sendMessage}
+                returnKeyType="send"
+                editable={!isLoading}
+              />
+              <ThemedText style={[styles.charCount, { color: colors.textSecondary }]}>
+                {inputText.length}/500
+              </ThemedText>
+            </View>
+            <Pressable
+              onPress={sendMessage}
+              disabled={isLoading || (!inputText.trim() && !pendingImageDataUrl)}
+              style={({ pressed }) => [
+                styles.sendButton,
                 {
-                  backgroundColor: colors.inputBackground,
-                  borderColor: colors.inputBorder,
-                  color: colors.text,
-                  fontSize: 15 * fontScale,
+                  backgroundColor:
+                    (inputText.trim() || pendingImageDataUrl) && !isLoading
+                      ? colors.primary
+                      : colors.surfaceVariant,
+                  opacity: pressed ? 0.8 : isLoading ? 0.5 : 1,
                 },
               ]}
-              placeholder={t('chat.inputPlaceholder')}
-              placeholderTextColor={colors.textSecondary}
-              value={inputText}
-              onChangeText={setInputText}
-              multiline
-              maxLength={500}
-              onSubmitEditing={sendMessage}
-              returnKeyType="send"
-              editable={!isLoading}
-            />
-            <ThemedText style={[styles.charCount, { color: colors.textSecondary }]}>
-              {inputText.length}/500
-            </ThemedText>
+            >
+              <Ionicons
+                name="send"
+                size={18}
+                color={(inputText.trim() || pendingImageDataUrl) && !isLoading ? '#FFFFFF' : colors.textSecondary}
+              />
+            </Pressable>
           </View>
-          <Pressable
-            onPress={sendMessage}
-            disabled={isLoading || !inputText.trim()}
-            style={({ pressed }) => [
-              styles.sendButton,
-              {
-                backgroundColor:
-                  inputText.trim() && !isLoading
-                    ? colors.primary
-                    : colors.surfaceVariant,
-                opacity: pressed ? 0.8 : isLoading ? 0.5 : 1,
-              },
-            ]}
-          >
-            <Ionicons
-              name="send"
-              size={18}
-              color={inputText.trim() && !isLoading ? '#FFFFFF' : colors.textSecondary}
-            />
-          </Pressable>
         </View>
       </KeyboardAvoidingView>
     </ThemedView>
@@ -323,11 +354,13 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   inputBar: {
-    flexDirection: 'row',
-    alignItems: 'flex-end',
     paddingHorizontal: 12,
     paddingTop: 8,
     borderTopWidth: 1,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
     gap: 8,
   },
   inputContainer: {
@@ -343,7 +376,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingHorizontal: 16,
     paddingTop: 10,
-    paddingBottom: 20, // Space for the character count
+    paddingBottom: 20,
   },
   charCount: {
     position: 'absolute',
@@ -357,5 +390,33 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  iconButton: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  imagePreviewContainer: {
+    position: 'relative',
+    alignSelf: 'flex-start',
+    marginBottom: 8,
+  },
+  imagePreview: {
+    width: 80,
+    height: 80,
+    borderRadius: 10,
+  },
+  imageRemoveBtn: {
+    position: 'absolute',
+    top: -6,
+    right: -6,
+    borderRadius: 10,
+  },
+  bubbleImage: {
+    width: 200,
+    height: 200,
+    borderRadius: 12,
+    marginBottom: 6,
   },
 });

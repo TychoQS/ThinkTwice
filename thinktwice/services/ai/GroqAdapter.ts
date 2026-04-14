@@ -6,9 +6,13 @@ import i18n from '@/i18n';
 /**
  * Groq / OpenAI-compatible API response types (subset we need).
  */
+type GroqContentPart =
+  | { type: 'text'; text: string }
+  | { type: 'image_url'; image_url: { url: string } };
+
 interface GroqMessage {
   role: 'system' | 'user' | 'assistant';
-  content: string;
+  content: string | GroqContentPart[];
 }
 
 interface GroqChoice {
@@ -37,10 +41,17 @@ export class GroqAdapter implements AIAdapter {
     // Map conversation history (skip transient messages like loading/error)
     for (const msg of conversationHistory) {
       if (msg.isLoading || msg.isError) continue;
-      messages.push({
-        role: msg.role === 'user' ? 'user' : 'assistant',
-        content: msg.text,
-      });
+      if (msg.role === 'user' && msg.imageDataUrl) {
+        const parts: GroqContentPart[] = [];
+        if (msg.text) parts.push({ type: 'text', text: msg.text });
+        parts.push({ type: 'image_url', image_url: { url: msg.imageDataUrl } });
+        messages.push({ role: 'user', content: parts });
+      } else {
+        messages.push({
+          role: msg.role === 'user' ? 'user' : 'assistant',
+          content: msg.text,
+        });
+      }
     }
 
     const body = {

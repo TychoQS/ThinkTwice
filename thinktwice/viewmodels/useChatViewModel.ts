@@ -1,6 +1,7 @@
 import { useState, useCallback, useRef } from 'react';
 import { useTranslation } from '@/node_modules/react-i18next';
 import type { FlatList } from 'react-native';
+import * as ImagePicker from 'expo-image-picker';
 import type { ChatMessage } from '@/models/chat';
 import { sendMessageToAI } from '@/services/aiService';
 
@@ -23,6 +24,7 @@ export function useChatViewModel() {
   ]);
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [pendingImageDataUrl, setPendingImageDataUrl] = useState<string | null>(null);
 
   const scrollToEnd = useCallback(() => {
     setTimeout(() => {
@@ -30,15 +32,34 @@ export function useChatViewModel() {
     }, 100);
   }, []);
 
+  const pickImage = useCallback(async () => {
+    const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (status !== 'granted') return;
+    const result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ['images'],
+      base64: true,
+      quality: 0.6,
+    });
+    if (!result.canceled && result.assets[0]?.base64) {
+      const { base64, mimeType } = result.assets[0];
+      setPendingImageDataUrl(`data:${mimeType ?? 'image/jpeg'};base64,${base64}`);
+    }
+  }, []);
+
+  const clearPendingImage = useCallback(() => setPendingImageDataUrl(null), []);
+
   const sendMessage = useCallback(async () => {
     const trimmed = inputText.trim();
-    if (!trimmed || isLoading) return;
+    if ((!trimmed && !pendingImageDataUrl) || isLoading) return;
+
+    const imageDataUrl = pendingImageDataUrl ?? undefined;
 
     const userMsg: ChatMessage = {
       id: createId(),
       role: 'user',
       text: trimmed,
       timestamp: Date.now(),
+      imageDataUrl,
     };
 
     // Add a loading placeholder for the bot
@@ -54,6 +75,7 @@ export function useChatViewModel() {
 
     setMessages([...updatedMessages, loadingMsg]);
     setInputText('');
+    setPendingImageDataUrl(null);
     setIsLoading(true);
     scrollToEnd();
 
@@ -82,7 +104,7 @@ export function useChatViewModel() {
       setIsLoading(false);
       scrollToEnd();
     }
-  }, [inputText, isLoading, messages, t, scrollToEnd]);
+  }, [inputText, isLoading, messages, t, scrollToEnd, pendingImageDataUrl]);
 
-  return { messages, inputText, setInputText, sendMessage, isLoading, flatListRef };
+  return { messages, inputText, setInputText, sendMessage, isLoading, flatListRef, pendingImageDataUrl, pickImage, clearPendingImage };
 }

@@ -7,4 +7,5 @@ export interface ChatMessage {
   timestamp: number;
   isLoading?: boolean;
   isError?: boolean;
+  imageDataUrl?: string; // data:image/...;base64,... — used for display and API
 }

@@ -39,7 +39,13 @@
           }
         }
       ],
-      "expo-localization"
+      "expo-localization",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "ThinkTwice needs access to your photos to let you share product images with the AI."
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
