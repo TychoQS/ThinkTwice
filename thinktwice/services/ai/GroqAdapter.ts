@@ -1,19 +1,12 @@
-import type { AIAdapter } from './AIAdapter';
+import type {
+  AIAdapter,
+  AIContentPart,
+  AIConversationMessage,
+  AIRequestOptions,
+} from './AIAdapter';
 import type { ChatMessage } from '@/models/chat';
 import { AI_CONFIG } from '../aiConfig';
 import i18n from '@/i18n';
-
-/**
- * Groq / OpenAI-compatible API response types (subset we need).
- */
-type GroqContentPart =
-  | { type: 'text'; text: string }
-  | { type: 'image_url'; image_url: { url: string } };
-
-interface GroqMessage {
-  role: 'system' | 'user' | 'assistant';
-  content: string | GroqContentPart[];
-}
 
 interface GroqChoice {
   message: { content: string };
@@ -28,21 +21,24 @@ interface GroqResponse {
  * AI adapter that calls the Groq API (OpenAI-compatible format) via `fetch`.
  */
 export class GroqAdapter implements AIAdapter {
-  async sendMessage(conversationHistory: ChatMessage[]): Promise<string> {
-    const messages: GroqMessage[] = [];
+  private buildChatMessages(
+    conversationHistory: ChatMessage[],
+    systemPrompt?: string,
+  ): AIConversationMessage[] {
+    const messages: AIConversationMessage[] = [];
 
-    // System prompt
-    if (AI_CONFIG.systemPrompt) {
-      const currentLang = i18n.language || 'en';
-      const promptWithLanguage = `${AI_CONFIG.systemPrompt}\n\nCRITICAL INSTRUCTION: You MUST respond entirely in the language corresponding to the ISO code '${currentLang}'. Do NOT use other language ever. You must reply in the language that we provided here which is the one that the user set the application, even if the user use another language.`;
-      messages.push({ role: 'system', content: promptWithLanguage });
+    if (systemPrompt) {
+      messages.push({
+        role: 'system',
+        content: this.withLanguageInstruction(systemPrompt),
+      });
     }
 
-    // Map conversation history (skip transient messages like loading/error)
     for (const msg of conversationHistory) {
       if (msg.isLoading || msg.isError) continue;
+
       if (msg.role === 'user' && msg.imageDataUrl) {
-        const parts: GroqContentPart[] = [];
+        const parts: AIContentPart[] = [];
         if (msg.text) parts.push({ type: 'text', text: msg.text });
         parts.push({ type: 'image_url', image_url: { url: msg.imageDataUrl } });
         messages.push({ role: 'user', content: parts });
@@ -54,13 +50,25 @@ export class GroqAdapter implements AIAdapter {
       }
     }
 
+    return messages;
+  }
+
+  private withLanguageInstruction(prompt: string): string {
+    const currentLang = i18n.language || 'en';
+
+    return `${prompt}\n\nCRITICAL INSTRUCTION: You MUST respond entirely in the language corresponding to the ISO code '${currentLang}'. Do NOT use other language ever. You must reply in the language that we provided here which is the one that the user set the application, even if the user use another language.`;
+  }
+
+  async sendConversation(
+    messages: AIConversationMessage[],
+    options: Omit<AIRequestOptions, 'systemPrompt'> = {},
+  ): Promise<string> {
     const body = {
       model: AI_CONFIG.model,
       messages,
-      temperature: AI_CONFIG.temperature,
-      max_tokens: AI_CONFIG.maxOutputTokens,
+      temperature: options.temperature ?? AI_CONFIG.temperature,
+      max_tokens: options.maxOutputTokens ?? AI_CONFIG.maxOutputTokens,
     };
-
     const url = `${AI_CONFIG.baseUrl}/chat/completions`;
 
     try {
@@ -95,5 +103,20 @@ export class GroqAdapter implements AIAdapter {
       console.error('[GroqAdapter] Request failed:', error);
       throw error;
     }
+  }
+
+  async sendMessage(
+    conversationHistory: ChatMessage[],
+    options: AIRequestOptions = {},
+  ): Promise<string> {
+    const messages = this.buildChatMessages(
+      conversationHistory,
+      options.systemPrompt ?? AI_CONFIG.defaultSystemPrompt,
+    );
+
+    return this.sendConversation(messages, {
+      temperature: options.temperature,
+      maxOutputTokens: options.maxOutputTokens,
+    });
   }
 }

@@ -3,25 +3,31 @@ import { useTranslation } from '@/node_modules/react-i18next';
 import type { FlatList } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import type { ChatMessage } from '@/models/chat';
-import { sendMessageToAI } from '@/services/aiService';
+import { sendMessageToAI, syncUserMemoryFromConversation } from '@/services/aiService';
 
 let nextId = 1;
 function createId(): string {
   return String(nextId++);
 }
 
-export function useChatViewModel() {
-  const { t } = useTranslation();
-  const flatListRef = useRef<FlatList<ChatMessage>>(null);
-
-  const [messages, setMessages] = useState<ChatMessage[]>([
+function createInitialMessages(welcomeMessage: string): ChatMessage[] {
+  return [
     {
       id: createId(),
       role: 'bot',
-      text: t('chat.welcomeMessage'),
+      text: welcomeMessage,
       timestamp: Date.now(),
     },
-  ]);
+  ];
+}
+
+export function useChatViewModel() {
+  const { t } = useTranslation();
+  const flatListRef = useRef<FlatList<ChatMessage>>(null);
+  const sessionVersionRef = useRef(0);
+  const welcomeMessage = t('chat.welcomeMessage');
+
+  const [messages, setMessages] = useState<ChatMessage[]>(() => createInitialMessages(welcomeMessage));
   const [inputText, setInputText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [pendingImageDataUrl, setPendingImageDataUrl] = useState<string | null>(null);
@@ -47,6 +53,14 @@ export function useChatViewModel() {
   }, []);
 
   const clearPendingImage = useCallback(() => setPendingImageDataUrl(null), []);
+
+  const resetConversation = useCallback(() => {
+    sessionVersionRef.current += 1;
+    setMessages(createInitialMessages(welcomeMessage));
+    setInputText('');
+    setIsLoading(false);
+    setPendingImageDataUrl(null);
+  }, [welcomeMessage]);
 
   const sendMessage = useCallback(async () => {
     const trimmed = inputText.trim();
@@ -79,8 +93,12 @@ export function useChatViewModel() {
     setIsLoading(true);
     scrollToEnd();
 
+    const sessionVersion = sessionVersionRef.current;
+
     try {
       const aiResponse = await sendMessageToAI(updatedMessages);
+
+      if (sessionVersion !== sessionVersionRef.current) return;
 
       const botMsg: ChatMessage = {
         id: loadingMsg.id, // Reuse the same id to replace
@@ -90,7 +108,10 @@ export function useChatViewModel() {
       };
 
       setMessages([...updatedMessages, botMsg]);
+      void syncUserMemoryFromConversation([userMsg, botMsg]);
     } catch {
+      if (sessionVersion !== sessionVersionRef.current) return;
+
       const errorMsg: ChatMessage = {
         id: loadingMsg.id,
         role: 'bot',
@@ -101,10 +122,23 @@ export function useChatViewModel() {
 
       setMessages([...updatedMessages, errorMsg]);
     } finally {
+      if (sessionVersion !== sessionVersionRef.current) return;
+
       setIsLoading(false);
       scrollToEnd();
     }
   }, [inputText, isLoading, messages, t, scrollToEnd, pendingImageDataUrl]);
 
-  return { messages, inputText, setInputText, sendMessage, isLoading, flatListRef, pendingImageDataUrl, pickImage, clearPendingImage };
+  return {
+    messages,
+    inputText,
+    setInputText,
+    sendMessage,
+    isLoading,
+    flatListRef,
+    pendingImageDataUrl,
+    pickImage,
+    clearPendingImage,
+    resetConversation,
+  };
 }

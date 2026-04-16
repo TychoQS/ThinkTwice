@@ -12,9 +12,9 @@ import {
 import { useRouter } from 'expo-router';
 import { useTranslation } from '@/node_modules/react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { DrawerActions, useFocusEffect, useNavigation } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -161,8 +161,16 @@ export default function ChatScreen() {
   const { resolvedTheme, fontScale } = useSettings();
   const colors = Colors[resolvedTheme];
 
-  const { messages, inputText, setInputText, sendMessage, isLoading, flatListRef, pendingImageDataUrl, pickImage, clearPendingImage } =
+  const { messages, inputText, setInputText, sendMessage, isLoading, flatListRef, pendingImageDataUrl, pickImage, clearPendingImage, resetConversation } =
     useChatViewModel();
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        resetConversation();
+      };
+    }, [resetConversation]),
+  );
 
   return (
     <ThemedView
