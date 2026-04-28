@@ -13,6 +13,7 @@ export interface AIRequestOptions {
   systemPrompt?: string;
   temperature?: number;
   maxOutputTokens?: number;
+  isPremium?: boolean;
 }
 
 /**

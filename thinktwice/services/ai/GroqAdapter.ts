@@ -63,8 +63,9 @@ export class GroqAdapter implements AIAdapter {
     messages: AIConversationMessage[],
     options: Omit<AIRequestOptions, 'systemPrompt'> = {},
   ): Promise<string> {
+    const model = options?.isPremium ? AI_CONFIG.premiumModel : AI_CONFIG.model;
     const body = {
-      model: AI_CONFIG.model,
+      model,
       messages,
       temperature: options.temperature ?? AI_CONFIG.temperature,
       max_tokens: options.maxOutputTokens ?? AI_CONFIG.maxOutputTokens,
@@ -117,6 +118,7 @@ export class GroqAdapter implements AIAdapter {
     return this.sendConversation(messages, {
       temperature: options.temperature,
       maxOutputTokens: options.maxOutputTokens,
+      isPremium: options.isPremium,
     });
   }
 }

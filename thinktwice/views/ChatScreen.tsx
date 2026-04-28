@@ -185,7 +185,7 @@ export default function ChatScreen() {
           { paddingTop: insets.top + 8, borderBottomColor: colors.border, backgroundColor: colors.surface },
         ]}
       >
-        <Pressable onPress={() => router.back()} style={styles.headerBtn}>
+        <Pressable onPress={() => router.push('/lobby' as any)} style={styles.headerBtn}>
           <Ionicons name="arrow-back" size={24} color={colors.text} />
         </Pressable>
         <ThemedText type="defaultSemiBold" style={[styles.headerTitle, { fontSize: 17 * fontScale }]}>

@@ -4,6 +4,7 @@ import type { FlatList } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import type { ChatMessage } from '@/models/chat';
 import { sendMessageToAI, syncUserMemoryFromConversation } from '@/services/aiService';
+import { useSettings } from '@/contexts/SettingsContext';
 
 let nextId = 1;
 function createId(): string {
@@ -23,6 +24,7 @@ function createInitialMessages(welcomeMessage: string): ChatMessage[] {
 
 export function useChatViewModel() {
   const { t } = useTranslation();
+  const { isPremium } = useSettings();
   const flatListRef = useRef<FlatList<ChatMessage>>(null);
   const sessionVersionRef = useRef(0);
   const welcomeMessage = t('chat.welcomeMessage');
@@ -96,7 +98,7 @@ export function useChatViewModel() {
     const sessionVersion = sessionVersionRef.current;
 
     try {
-      const aiResponse = await sendMessageToAI(updatedMessages);
+      const aiResponse = await sendMessageToAI(updatedMessages, isPremium);
 
       if (sessionVersion !== sessionVersionRef.current) return;
 

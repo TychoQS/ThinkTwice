@@ -15,10 +15,12 @@ interface SettingsContextValue {
     language: string;
     distractionApp: string;
     distractionAppLabel: string;
+    isPremium: boolean;
     setThemeMode: (mode: ThemeMode) => void;
     setFontSize: (size: FontSize) => void;
     setLanguage: (lang: string) => void;
     setDistractionApp: (appId: string, appLabel?: string) => void;
+    setIsPremium: (value: boolean) => void;
 }
 
 const STORAGE_KEYS = {
@@ -27,6 +29,7 @@ const STORAGE_KEYS = {
     language: '@thinktwice_language',
     distractionApp: '@thinktwice_distractionApp',
     distractionAppLabel: '@thinktwice_distractionAppLabel',
+    isPremium: '@thinktwice_isPremium',
 } as const;
 
 const FONT_SCALE_MAP: Record<FontSize, number> = {
@@ -46,17 +49,19 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [language, setLanguageState] = useState<string>(i18n.language ?? 'en');
     const [distractionApp, setDistractionAppState] = useState<string>('');
     const [distractionAppLabel, setDistractionAppLabelState] = useState<string>('');
+    const [isPremium, setIsPremiumState] = useState<boolean>(false);
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
         (async () => {
             try {
-                const [savedTheme, savedFontSize, savedLang, savedApp, savedAppLabel] = await Promise.all([
+                const [savedTheme, savedFontSize, savedLang, savedApp, savedAppLabel, savedPremium] = await Promise.all([
                     AsyncStorage.getItem(STORAGE_KEYS.theme),
                     AsyncStorage.getItem(STORAGE_KEYS.fontSize),
                     AsyncStorage.getItem(STORAGE_KEYS.language),
                     AsyncStorage.getItem(STORAGE_KEYS.distractionApp),
                     AsyncStorage.getItem(STORAGE_KEYS.distractionAppLabel),
+                    AsyncStorage.getItem(STORAGE_KEYS.isPremium),
                 ]);
 
                 if (savedTheme) setThemeModeState(savedTheme as ThemeMode);
@@ -67,6 +72,7 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
                 }
                 if (savedApp) setDistractionAppState(savedApp);
                 if (savedAppLabel) setDistractionAppLabelState(savedAppLabel);
+                if (savedPremium) setIsPremiumState(savedPremium === 'true');
             } catch {
             } finally {
                 setLoaded(true);
@@ -108,6 +114,11 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
         }
     }, []);
 
+    const setIsPremium = useCallback((value: boolean) => {
+        setIsPremiumState(value);
+        AsyncStorage.setItem(STORAGE_KEYS.isPremium, String(value));
+    }, []);
+
     const value = useMemo<SettingsContextValue>(
         () => ({
             themeMode,
@@ -117,12 +128,14 @@ export function SettingsProvider({ children }: { children: React.ReactNode }) {
             language,
             distractionApp,
             distractionAppLabel,
+            isPremium,
             setThemeMode,
             setFontSize,
             setLanguage,
             setDistractionApp,
+            setIsPremium,
         }),
-        [themeMode, resolvedTheme, fontSize, language, distractionApp, distractionAppLabel, setThemeMode, setFontSize, setLanguage, setDistractionApp]
+        [themeMode, resolvedTheme, fontSize, language, distractionApp, distractionAppLabel, isPremium, setThemeMode, setFontSize, setLanguage, setDistractionApp, setIsPremium]
     );
 
     if (!loaded) return null;

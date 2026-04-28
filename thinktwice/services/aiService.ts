@@ -107,7 +107,7 @@ async function getUserMemorySummaryForPrompt(): Promise<string | null> {
  * @returns The AI-generated response text
  * @throws Error if the API call fails
  */
-export async function sendMessageToAI(conversationHistory: ChatMessage[]): Promise<string> {
+export async function sendMessageToAI(conversationHistory: ChatMessage[], isPremium?: boolean): Promise<string> {
   let userMemorySummary: string | null = null;
 
   try {
@@ -123,6 +123,7 @@ export async function sendMessageToAI(conversationHistory: ChatMessage[]): Promi
 
   return adapter.sendMessage(conversationHistory, {
     systemPrompt: buildAssistantSystemPrompt(userMemorySummary),
+    isPremium,
   });
 }
 

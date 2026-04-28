@@ -49,7 +49,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
     const router = useRouter();
     const pathname = usePathname();
     const { t } = useTranslation();
-    const { resolvedTheme, setThemeMode } = useSettings();
+    const { resolvedTheme, setThemeMode, isPremium } = useSettings();
     const colors = Colors[resolvedTheme];
     const isDark = resolvedTheme === 'dark';
 
@@ -57,8 +57,8 @@ export function DrawerContent(props: DrawerContentComponentProps) {
         setThemeMode(isDark ? 'light' : 'dark');
     };
 
-    const navigate = (route: '/' | '/settings') => {
-        router.push(route);
+    const navigate = (route: string) => {
+        router.push(route as any);
         props.navigation.closeDrawer();
     };
 
@@ -92,6 +92,13 @@ export function DrawerContent(props: DrawerContentComponentProps) {
                     isActive={pathname === '/settings'}
                     colors={colors}
                     onPress={() => navigate('/settings')}
+                />
+                <DrawerItem
+                    icon={isPremium ? 'star' : 'star-outline'}
+                    label={isPremium ? t('premium.premiumLabel') : t('premium.menuLabel')}
+                    isActive={pathname === '/premium'}
+                    colors={isPremium ? { ...colors, primary: '#F59E0B', text: colors.text, textSecondary: colors.textSecondary } : colors}
+                    onPress={() => navigate('/premium')}
                 />
             </View>
 

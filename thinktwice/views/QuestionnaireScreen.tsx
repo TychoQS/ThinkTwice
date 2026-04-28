@@ -1,8 +1,10 @@
-import { StyleSheet, Pressable, View, ScrollView } from 'react-native';
+import { StyleSheet, Pressable, View, ScrollView, Modal } from 'react-native';
+import { useState } from 'react';
 import { useRouter } from 'expo-router';
 import { useTranslation } from '@/node_modules/react-i18next';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
+import { saveDecision } from '@/services/decisionLogService';
 
 import { ThemedText } from '@/components/themed-text';
 import { ThemedView } from '@/components/themed-view';
@@ -252,6 +254,108 @@ function ProfileDetectionPhase({
   );
 }
 
+// ─── Profile Info Modal ───────────────────────────────────────────────────────
+
+function ProfileInfoModal({
+  profile,
+  isVisible,
+  onClose,
+  colors,
+  fontScale,
+}: {
+  profile: BuyerProfile | null;
+  isVisible: boolean;
+  onClose: () => void;
+  colors: typeof Colors.light;
+  fontScale: number;
+}) {
+  const { t } = useTranslation();
+  if (!profile) return null;
+
+  const labelKey = `questionnaire.profiles.${profile}.label` as const;
+  const subtitleKey = `questionnaire.profiles.${profile}.subtitle` as const;
+  const descKey = `questionnaire.profiles.${profile}.description` as const;
+  const tip1Key = `questionnaire.profiles.${profile}.tip1` as const;
+  const tip2Key = `questionnaire.profiles.${profile}.tip2` as const;
+  const tip3Key = `questionnaire.profiles.${profile}.tip3` as const;
+
+  const PROFILE_ICONS: Record<BuyerProfile, keyof typeof Ionicons.glyphMap> = {
+    impulsive: 'flash-outline',
+    dealHunter: 'pricetag-outline',
+    functional: 'construct-outline',
+    budgetConstrained: 'wallet-outline',
+  };
+
+  const PROFILE_COLORS: Record<BuyerProfile, string> = {
+    impulsive: '#EF4444',
+    dealHunter: '#F59E0B',
+    functional: '#3B82F6',
+    budgetConstrained: '#10B981',
+  };
+
+  const accentColor = PROFILE_COLORS[profile];
+
+  return (
+    <Modal visible={isVisible} transparent animationType="slide" onRequestClose={onClose}>
+      <Pressable style={styles.modalOverlay} onPress={onClose}>
+        <Pressable
+          style={[styles.modalSheet, { backgroundColor: colors.surface }]}
+          onPress={() => {}}
+        >
+          {/* Handle */}
+          <View style={[styles.modalHandle, { backgroundColor: colors.border }]} />
+
+          {/* Profile header */}
+          <View style={styles.modalHeader}>
+            <View style={[styles.modalProfileIcon, { backgroundColor: accentColor + '18' }]}>
+              <Ionicons name={PROFILE_ICONS[profile]} size={32} color={accentColor} />
+            </View>
+            <View style={styles.modalHeaderText}>
+              <ThemedText type="defaultSemiBold" style={[styles.modalProfileLabel, { fontSize: 18 * fontScale }]}>
+                {t(labelKey)}
+              </ThemedText>
+              <ThemedText style={[styles.modalProfileSub, { color: accentColor, fontSize: 13 * fontScale }]}>
+                {t(subtitleKey)}
+              </ThemedText>
+            </View>
+          </View>
+
+          {/* Description */}
+          <ThemedText style={[styles.modalDesc, { color: colors.textSecondary, fontSize: 14 * fontScale }]}>
+            {t(descKey)}
+          </ThemedText>
+
+          {/* Tips */}
+          <ThemedText type="defaultSemiBold" style={[styles.modalTipsTitle, { fontSize: 14 * fontScale, color: colors.text }]}>
+            {t('questionnaire.profileModal.tipsTitle')}
+          </ThemedText>
+          {[tip1Key, tip2Key, tip3Key].map((tipKey, i) => (
+            <View key={i} style={styles.modalTipRow}>
+              <View style={[styles.modalTipDot, { backgroundColor: accentColor }]} />
+              <ThemedText style={[styles.modalTipText, { color: colors.textSecondary, fontSize: 13 * fontScale }]}>
+                {t(tipKey)}
+              </ThemedText>
+            </View>
+          ))}
+
+          {/* Close button */}
+          <Pressable
+            onPress={onClose}
+            style={({ pressed }) => [
+              styles.modalCloseBtn,
+              { backgroundColor: colors.surfaceVariant, opacity: pressed ? 0.7 : 1 },
+            ]}
+          >
+            <ThemedText style={[styles.modalCloseBtnText, { fontSize: 15 * fontScale }]}>
+              {t('questionnaire.profileModal.close')}
+            </ThemedText>
+          </Pressable>
+        </Pressable>
+      </Pressable>
+    </Modal>
+  );
+}
+
 // ─── Questions ────────────────────────────────────────────────────────────────
 
 function QuestionsPhase({
@@ -266,6 +370,7 @@ function QuestionsPhase({
   onSelectOption,
   onNext,
   onBack,
+  onProfileBadgePress,
   colors,
   fontScale,
 }: {
@@ -280,6 +385,7 @@ function QuestionsPhase({
   onSelectOption: (id: string) => void;
   onNext: () => void;
   onBack: () => void;
+  onProfileBadgePress?: () => void;
   colors: typeof Colors.light;
   fontScale: number;
 }) {
@@ -290,12 +396,19 @@ function QuestionsPhase({
     <View style={styles.phaseContainer}>
       {/* Profile badge */}
       {profileBadge && (
-        <View style={[styles.profileBadge, { backgroundColor: colors.surfaceVariant }]}>
+        <Pressable
+          onPress={onProfileBadgePress}
+          style={({ pressed }) => [
+            styles.profileBadge,
+            { backgroundColor: colors.surfaceVariant, opacity: pressed ? 0.7 : 1 },
+          ]}
+        >
           <Ionicons name="person-outline" size={12} color={colors.textSecondary} />
           <ThemedText style={[styles.profileBadgeText, { color: colors.textSecondary, fontSize: 11 * fontScale }]}>
             {profileBadge}
           </ThemedText>
-        </View>
+          <Ionicons name="information-circle-outline" size={12} color={colors.textSecondary} />
+        </Pressable>
       )}
       {/* Progress */}
       <View style={styles.progressContainer}>
@@ -417,25 +530,47 @@ const RESULT_COLORS: Record<'proceed' | 'wait' | 'avoid', { bg: string; icon: st
 
 function ResultPhase({
   result,
+  mode,
+  profile,
   onTryAgain,
   onBackHome,
   colors,
   fontScale,
 }: {
   result: QuestionnaireResult;
+  mode: 'quick' | 'profile';
+  profile?: string;
   onTryAgain: () => void;
   onBackHome: () => void;
   colors: typeof Colors.light;
   fontScale: number;
 }) {
   const { t } = useTranslation();
+  const [loggedDecision, setLoggedDecision] = useState<'bought' | 'skipped' | 'pending' | null>(null);
+
+  function handleDecision(d: 'bought' | 'skipped' | 'pending') {
+    setLoggedDecision(d);
+    saveDecision({
+      id: `${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      timestamp: Date.now(),
+      recommendation: result.recommendation,
+      decision: d,
+      mode,
+      profile,
+    });
+  }
+
   const config = RESULT_CONFIG[result.recommendation];
   const resultColors = RESULT_COLORS[result.recommendation];
   const labelKey = `questionnaire.result.${result.recommendation}.label` as const;
   const descKey = `questionnaire.result.${result.recommendation}.description` as const;
 
   return (
-    <View style={[styles.phaseContainer, styles.resultContainer]}>
+    <ScrollView
+      style={{ flex: 1 }}
+      contentContainerStyle={[styles.phaseContainer, styles.resultContainer]}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={[styles.resultIconWrap, { backgroundColor: resultColors.bg }]}>
         <Ionicons name={config.icon} size={64} color={resultColors.icon} />
       </View>
@@ -466,6 +601,38 @@ function ResultPhase({
         </View>
       </View>
 
+      {/* Decision log */}
+      <View style={[styles.decisionCard, { backgroundColor: colors.surfaceVariant }]}>
+        <ThemedText type="defaultSemiBold" style={[styles.decisionTitle, { fontSize: 14 * fontScale }]}>
+          {loggedDecision ? t('questionnaire.result.decisionLogged') : t('questionnaire.result.decisionPrompt')}
+        </ThemedText>
+        {!loggedDecision ? (
+          <View style={styles.decisionButtons}>
+            {(['bought', 'skipped', 'pending'] as const).map((d) => (
+              <Pressable
+                key={d}
+                onPress={() => handleDecision(d)}
+                style={({ pressed }) => [
+                  styles.decisionBtn,
+                  { backgroundColor: colors.surface, borderColor: colors.border, opacity: pressed ? 0.7 : 1 },
+                ]}
+              >
+                <ThemedText style={[styles.decisionBtnText, { color: colors.text, fontSize: 12 * fontScale }]}>
+                  {t(`questionnaire.result.decision${d.charAt(0).toUpperCase() + d.slice(1)}` as any)}
+                </ThemedText>
+              </Pressable>
+            ))}
+          </View>
+        ) : (
+          <View style={styles.decisionLogged}>
+            <Ionicons name="checkmark-circle" size={18} color={colors.primary} />
+            <ThemedText style={[{ color: colors.primary, fontSize: 13 * fontScale }]}>
+              {t(`questionnaire.result.decision${loggedDecision.charAt(0).toUpperCase() + loggedDecision.slice(1)}` as any)}
+            </ThemedText>
+          </View>
+        )}
+      </View>
+
       <View style={styles.resultActions}>
         <Pressable
           onPress={onTryAgain}
@@ -493,7 +660,7 @@ function ResultPhase({
           </ThemedText>
         </Pressable>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -505,6 +672,7 @@ export default function QuestionnaireScreen() {
   const insets = useSafeAreaInsets();
   const { resolvedTheme, fontScale } = useSettings();
   const colors = Colors[resolvedTheme];
+  const [showProfileModal, setShowProfileModal] = useState(false);
 
   const vm = useQuestionnaireViewModel();
 
@@ -512,7 +680,7 @@ export default function QuestionnaireScreen() {
 
   function handleBack() {
     if (vm.phase === 'mode-selection') {
-      router.back();
+      router.push('/lobby' as any);
     } else if (vm.phase === 'result') {
       vm.reset();
     } else if (vm.phase === 'profile-detection') {
@@ -579,6 +747,7 @@ export default function QuestionnaireScreen() {
           onSelectOption={vm.selectOption}
           onNext={vm.goNext}
           onBack={vm.goBack}
+          onProfileBadgePress={vm.detectedProfile ? () => setShowProfileModal(true) : undefined}
           colors={colors}
           fontScale={fontScale}
         />
@@ -587,12 +756,23 @@ export default function QuestionnaireScreen() {
       {vm.phase === 'result' && (
         <ResultPhase
           result={vm.result}
+          mode={vm.mode}
+          profile={vm.detectedProfile ?? undefined}
           onTryAgain={vm.reset}
-          onBackHome={() => router.back()}
+          onBackHome={() => router.push('/lobby' as any)}
           colors={colors}
           fontScale={fontScale}
         />
       )}
+
+      {/* Profile info modal */}
+      <ProfileInfoModal
+        profile={vm.detectedProfile}
+        isVisible={showProfileModal}
+        onClose={() => setShowProfileModal(false)}
+        colors={colors}
+        fontScale={fontScale}
+      />
     </ThemedView>
   );
 }
@@ -825,6 +1005,110 @@ const styles = StyleSheet.create({
     flex: 1.5,
   },
   resultButtonText: {
+    fontWeight: '600',
+  },
+  // Decision log
+  decisionCard: {
+    width: '100%',
+    padding: 16,
+    borderRadius: 14,
+    gap: 12,
+    marginTop: 4,
+  },
+  decisionTitle: {
+    textAlign: 'center',
+  },
+  decisionButtons: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  decisionBtn: {
+    flex: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 6,
+    borderRadius: 10,
+    borderWidth: 1,
+    alignItems: 'center',
+  },
+  decisionBtnText: {
+    fontWeight: '500',
+    textAlign: 'center',
+  },
+  decisionLogged: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 6,
+  },
+  // Profile info modal
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0,0,0,0.5)',
+    justifyContent: 'flex-end',
+  },
+  modalSheet: {
+    borderTopLeftRadius: 24,
+    borderTopRightRadius: 24,
+    padding: 24,
+    paddingBottom: 36,
+    gap: 16,
+  },
+  modalHandle: {
+    width: 40,
+    height: 4,
+    borderRadius: 2,
+    alignSelf: 'center',
+    marginBottom: 8,
+  },
+  modalHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  modalProfileIcon: {
+    width: 56,
+    height: 56,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  modalHeaderText: {
+    flex: 1,
+    gap: 2,
+  },
+  modalProfileLabel: {},
+  modalProfileSub: {
+    fontWeight: '600',
+  },
+  modalDesc: {
+    lineHeight: 21,
+  },
+  modalTipsTitle: {
+    fontWeight: '700',
+  },
+  modalTipRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 10,
+  },
+  modalTipDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    marginTop: 6,
+    flexShrink: 0,
+  },
+  modalTipText: {
+    flex: 1,
+    lineHeight: 19,
+  },
+  modalCloseBtn: {
+    paddingVertical: 14,
+    borderRadius: 14,
+    alignItems: 'center',
+    marginTop: 4,
+  },
+  modalCloseBtnText: {
     fontWeight: '600',
   },
 });

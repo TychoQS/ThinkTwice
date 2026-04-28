@@ -14,6 +14,7 @@ export interface ProviderConfig {
   apiKey: string;
   baseUrl: string;
   model: string;
+  premiumModel: string;
   temperature: number;
   maxOutputTokens: number;
   topP?: number;
@@ -28,6 +29,7 @@ const PROVIDER_CONFIGS: Record<AIProvider, ProviderConfig> = {
     apiKey: GROQ_API_KEY,
     baseUrl: 'https://api.groq.com/openai/v1',
     model: 'meta-llama/llama-4-scout-17b-16e-instruct',
+    premiumModel: 'meta-llama/llama-4-maverick-17b-128e-instruct',
     temperature: 0.7,
     maxOutputTokens: 1024,
   },
